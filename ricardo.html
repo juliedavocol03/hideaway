@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ricardo Ramos | Hospitality Entrepreneur & Business Development</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f2ec;
+            color: #292822;
+            line-height: 1.45;
+        }
+
+        .ricardo-page {
+            width: 100%;
+            overflow: hidden;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .ricardo-hero {
+            min-height: 58vh;
+
+            display: flex;
+            align-items: center;
+
+            position: relative;
+
+            padding: 70px 8% 50px;
+
+            background:
+                linear-gradient(
+                    110deg,
+                    rgba(245, 242, 236, 0.98) 0%,
+                    rgba(245, 242, 236, 0.94) 50%,
+                    rgba(245, 242, 236, 0.58) 100%
+                ),
+                url("images/ricardo-background.jpg")
+                center / cover no-repeat;
+        }
+
+
+        .hero-content {
+            max-width: 560px;
+
+            position: relative;
+            z-index: 2;
+        }
+
+
+        /* =========================
+           BACK BUTTON
+        ========================= */
+
+        .back-button {
+            position: absolute;
+
+            top: 22px;
+            left: 8%;
+
+            text-decoration: none;
+
+            color: #5b554b;
+
+            font-size: 9px;
+
+            letter-spacing: 1.3px;
+
+            text-transform: uppercase;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 6px;
+
+            transition: 0.3s ease;
+        }
+
+
+        .back-button span {
+            font-size: 13px;
+        }
+
+
+        .back-button:hover {
+            color: #9c8054;
+        }
+
+
+        /* =========================
+           HERO TEXT
+        ========================= */
+
+        .eyebrow {
+            font-size: 8px;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            color: #927b59;
+
+            margin-bottom: 11px;
+
+            font-weight: 600;
+        }
+
+
+        .hero-name {
+            font-family: Georgia, "Times New Roman", serif;
+
+            font-size: clamp(38px, 4.3vw, 58px);
+
+            line-height: 0.95;
+
+            font-weight: 400;
+
+            letter-spacing: -1.5px;
+
+            color: #27261f;
+
+            margin-bottom: 15px;
+        }
+
+
+        .hero-line {
+            width: 38px;
+
+            height: 1px;
+
+            background: #9c8969;
+
+            margin-bottom: 14px;
+        }
+
+
+        .hero-role {
+            font-size: 9.5px;
+
+            letter-spacing: 1.7px;
+
+            text-transform: uppercase;
+
+            color: #665b4b;
+
+            font-weight: 500;
+
+            margin-bottom: 11px;
+        }
+
+
+        .hero-intro {
+            max-width: 470px;
+
+            font-size: 12.5px;
+
+            line-height: 1.6;
+
+            color: #514c43;
+        }
+
+
+        /* =========================
+           MAIN CONTENT
+        ========================= */
+
+        .ricardo-content {
+            max-width: 1000px;
+
+            margin: 0 auto;
+
+            padding: 50px 8% 55px;
+        }
+
+
+        /* =========================
+           SECTION LABEL
+        ========================= */
+
+        .section-label {
+            font-size: 8px;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            color: #9a835f;
+
+            margin-bottom: 9px;
+
+            font-weight: 600;
+        }
+
+
+        .section-title {
+            font-family: Georgia, "Times New Roman", serif;
+
+            font-size: clamp(25px, 2.8vw, 36px);
+
+            font-weight: 400;
+
+            line-height: 1.03;
+
+            color: #292820;
+
+            margin-bottom: 20px;
+        }
+
+
+        /* =========================
+           ABOUT SECTION
+        ========================= */
+
+        .about-section {
+            display: grid;
+
+            grid-template-columns: 0.65fr 1.5fr;
+
+            gap: 55px;
+
+            padding-bottom: 50px;
+        }
+
+
+        .about-heading {
+            position: relative;
+
+            padding-top: 8px;
+        }
+
+
+        .about-heading::before {
+            content: "";
+
+            width: 32px;
+
+            height: 1px;
+
+            background: #9c8969;
+
+            position: absolute;
+
+            top: -5px;
+
+            left: 0;
+        }
+
+
+        .about-text {
+            max-width: 570px;
+
+            font-size: 12px;
+
+            line-height: 1.65;
+
+            color: #555047;
+        }
+
+
+        .about-text p {
+            margin-bottom: 13px;
+        }
+
+
+        .about-text p:last-child {
+            margin-bottom: 0;
+        }
+
+
+        .about-text strong {
+            color: #353229;
+
+            font-weight: 500;
+        }
+
+
+        /* =========================
+           HOSPITALITY EXPERIENCE
+        ========================= */
+
+        .experience-section {
+            border-top: 1px solid rgba(60, 55, 45, 0.14);
+
+            padding-top: 45px;
+        }
+
+
+        .experience-section .section-title {
+            margin-bottom: 22px;
+        }
+
+
+        .experience-grid {
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            border-top: 1px solid rgba(60, 55, 45, 0.14);
+
+            border-left: 1px solid rgba(60, 55, 45, 0.14);
+        }
+
+
+        .experience-card {
+            background: #f5f2ec;
+
+            padding: 20px 23px;
+
+            min-height: 125px;
+
+            border-right: 1px solid rgba(60, 55, 45, 0.14);
+
+            border-bottom: 1px solid rgba(60, 55, 45, 0.14);
+
+            transition: 0.3s ease;
+        }
+
+
+        .experience-card:hover {
+            background: #ebe6dc;
+        }
+
+
+        .experience-number {
+            font-family: Georgia, "Times New Roman", serif;
+
+            font-size: 10px;
+
+            color: #a08a69;
+
+            margin-bottom: 8px;
+        }
+
+
+        .experience-card h3 {
+            font-family: Georgia, "Times New Roman", serif;
+
+            font-size: 17px;
+
+            font-weight: 400;
+
+            margin-bottom: 5px;
+
+            color: #2d2b24;
+        }
+
+
+        .experience-card p {
+            font-size: 10.5px;
+
+            line-height: 1.5;
+
+            color: #625d53;
+
+            max-width: 400px;
+        }
+
+
+        /* =========================
+           US TO PHILIPPINES
+        ========================= */
+
+        .journey-section {
+            padding: 65px 0;
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 55px;
+
+            align-items: center;
+        }
+
+
+        .journey-heading {
+            position: relative;
+
+            padding-top: 10px;
+        }
+
+
+        .journey-heading::before {
+            content: "";
+
+            width: 32px;
+
+            height: 1px;
+
+            background: #9c8969;
+
+            position: absolute;
+
+            top: -5px;
+
+            left: 0;
+        }
+
+
+        .journey-text {
+            font-size: 12px;
+
+            line-height: 1.7;
+
+            color: #555047;
+        }
+
+
+        .journey-text p {
+            margin-bottom: 13px;
+        }
+
+
+        .journey-text strong {
+            color: #353229;
+
+            font-weight: 500;
+        }
+
+
+        /* =========================
+           CLOSING
+        ========================= */
+
+        .closing-section {
+            min-height: 32vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 45px 8%;
+
+            background:
+                linear-gradient(
+                    rgba(39, 37, 31, 0.82),
+                    rgba(39, 37, 31, 0.82)
+                ),
+                url("images/ricardo-background.jpg")
+                center / cover no-repeat;
+        }
+
+
+        .closing-inner {
+            max-width: 550px;
+        }
+
+
+        .closing-label {
+            font-size: 8px;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            color: #c5b18d;
+
+            margin-bottom: 11px;
+        }
+
+
+        .closing-title {
+            font-family: Georgia, "Times New Roman", serif;
+
+            font-size: clamp(27px, 3.5vw, 43px);
+
+            line-height: 1.05;
+
+            font-weight: 400;
+
+            color: #f5f2ec;
+
+            margin-bottom: 13px;
+        }
+
+
+        .closing-text {
+            max-width: 480px;
+
+            margin: 0 auto;
+
+            font-size: 11.5px;
+
+            line-height: 1.6;
+
+            color: rgba(245, 242, 236, 0.78);
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .ricardo-footer {
+            padding: 15px 8%;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            background: #24231e;
+
+            color: rgba(245, 242, 236, 0.55);
+
+            font-size: 8px;
+
+            letter-spacing: 1.1px;
+
+            text-transform: uppercase;
+        }
+
+
+        .footer-name {
+            color: #f5f2ec;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            .ricardo-hero {
+                min-height: 65vh;
+
+                padding: 80px 8% 45px;
+            }
+
+
+            .hero-name {
+                font-size: clamp(36px, 10vw, 52px);
+            }
+
+
+            .hero-role {
+                font-size: 8.5px;
+
+                letter-spacing: 1.3px;
+            }
+
+
+            .hero-intro {
+                font-size: 12px;
+            }
+
+
+            .ricardo-content {
+                padding: 45px 8% 50px;
+            }
+
+
+            .about-section {
+                grid-template-columns: 1fr;
+
+                gap: 22px;
+
+                padding-bottom: 45px;
+            }
+
+
+            .section-title {
+                font-size: 29px;
+            }
+
+
+            .about-text {
+                font-size: 11.5px;
+
+                line-height: 1.65;
+            }
+
+
+            .experience-section {
+                padding-top: 40px;
+            }
+
+
+            .experience-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .experience-card {
+                padding: 20px;
+
+                min-height: auto;
+            }
+
+
+            .journey-section {
+                grid-template-columns: 1fr;
+
+                gap: 25px;
+
+                padding: 50px 0;
+            }
+
+
+            .journey-text {
+                font-size: 11.5px;
+            }
+
+
+            .closing-section {
+                min-height: 35vh;
+
+                padding: 45px 8%;
+            }
+
+
+            .ricardo-footer {
+                flex-direction: column;
+
+                gap: 6px;
+
+                text-align: center;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+<div class="ricardo-page">
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="ricardo-hero">
+
+        <a href="index.html" class="back-button">
+
+            <span>←</span>
+
+            Back
+
+        </a>
+
+
+        <div class="hero-content">
+
+            <div class="eyebrow">
+                About Him
+            </div>
+
+
+            <h1 class="hero-name">
+                Ricardo<br>
+                Ramos
+            </h1>
+
+
+            <div class="hero-line"></div>
+
+
+            <div class="hero-role">
+                Hospitality Entrepreneur &amp; Business Development
+            </div>
+
+
+            <p class="hero-intro">
+                A hospitality entrepreneur with experience in
+                restaurant ownership, business development,
+                and building hospitality businesses.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="ricardo-content">
+
+
+        <!-- =========================
+             BACKGROUND
+        ========================== -->
+
+        <section class="about-section">
+
+
+            <div class="about-heading">
+
+                <div class="section-label">
+                    Background
+                </div>
+
+
+                <h2 class="section-title">
+                    Building businesses
+                    through hospitality
+                    and experience.
+                </h2>
+
+            </div>
+
+
+
+            <div class="about-text">
+
+                <p>
+                    Ricardo is a <strong>hospitality entrepreneur
+                    and business development professional</strong>
+                    with years of experience building and operating
+                    businesses in the United States.
+                </p>
+
+
+                <p>
+                    His entrepreneurial journey includes
+                    <strong>owning and operating multiple restaurants
+                    in the US</strong>, giving him hands-on experience
+                    in restaurant management, hospitality, customer
+                    experience, and the realities of running a business.
+                </p>
+
+
+                <p>
+                    Alongside his restaurant ventures, he has built
+                    experience in <strong>business development,
+                    hospitality technology, and operations</strong>,
+                    working with companies including HubCharge,
+                    CaterConcierge, and Toast.
+                </p>
+
+
+                <p>
+                    After years of building businesses in the United
+                    States, Ricardo <strong>moved to the Philippines
+                    and continued his journey in hospitality</strong>,
+                    opening and developing his own bars and restaurants.
+                </p>
+
+
+                <p>
+                    Today, he brings his international experience in
+                    <strong>restaurant ownership, business development,
+                    and hospitality</strong> into the Philippine market,
+                    continuing to build businesses centered around food,
+                    drinks, service, and customer experience.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             EXPERIENCE
+        ========================== -->
+
+        <section class="experience-section">
+
+            <div class="section-label">
+                Areas of Experience
+            </div>
+
+
+            <h2 class="section-title">
+                Experience built<br>
+                around hospitality.
+            </h2>
+
+
+            <div class="experience-grid">
+
+
+                <div class="experience-card">
+
+                    <div class="experience-number">
+                        01
+                    </div>
+
+                    <h3>
+                        Restaurant Ownership
+                    </h3>
+
+                    <p>
+                        Owned and operated multiple restaurants
+                        in the United States, gaining hands-on
+                        experience across hospitality operations.
+                    </p>
+
+                </div>
+
+
+
+                <div class="experience-card">
+
+                    <div class="experience-number">
+                        02
+                    </div>
+
+                    <h3>
+                        Business Development
+                    </h3>
+
+                    <p>
+                        Experience developing business opportunities,
+                        partnerships, and hospitality-focused ventures.
+                    </p>
+
+                </div>
+
+
+
+                <div class="experience-card">
+
+                    <div class="experience-number">
+                        03
+                    </div>
+
+                    <h3>
+                        Hospitality Operations
+                    </h3>
+
+                    <p>
+                        Practical understanding of restaurant,
+                        bar, service, customer experience, and
+                        day-to-day business operations.
+                    </p>
+
+                </div>
+
+
+
+                <div class="experience-card">
+
+                    <div class="experience-number">
+                        04
+                    </div>
+
+                    <h3>
+                        Hospitality Technology
+                    </h3>
+
+                    <p>
+                        Experience with technology and digital
+                        solutions designed to improve hospitality
+                        businesses and customer experiences.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             JOURNEY
+        ========================== -->
+
+        <section class="journey-section">
+
+
+            <div class="journey-heading">
+
+                <div class="section-label">
+                    The Journey
+                </div>
+
+
+                <h2 class="section-title">
+                    From the US<br>
+                    to the Philippines.
+                </h2>
+
+            </div>
+
+
+
+            <div class="journey-text">
+
+                <p>
+                    After building his experience and owning
+                    restaurants in the United States, Ricardo
+                    brought his hospitality background to the
+                    Philippines.
+                </p>
+
+
+                <p>
+                    His move marked the beginning of a new chapter:
+                    <strong>opening and developing bars and
+                    restaurants in the Philippines</strong> while
+                    bringing an international perspective to
+                    hospitality.
+                </p>
+
+
+                <p>
+                    His focus remains on creating businesses that
+                    bring together <strong>great food, drinks,
+                    service, atmosphere, and memorable customer
+                    experiences.</strong>
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =========================
+         CLOSING
+    ========================== -->
+
+    <section class="closing-section">
+
+        <div class="closing-inner">
+
+            <div class="closing-label">
+                His Approach
+            </div>
+
+
+            <h2 class="closing-title">
+                Building businesses.<br>
+                Creating experiences.
+            </h2>
+
+
+            <p class="closing-text">
+                From restaurant ownership in the United States
+                to hospitality ventures in the Philippines,
+                Ricardo continues to build businesses around
+                people, hospitality, and experience.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer class="ricardo-footer">
+
+        <div class="footer-name">
+            Ricardo Ramos
+        </div>
+
+
+        <div>
+            Hospitality Entrepreneur &amp; Business Development
+        </div>
+
+    </footer>
+
+
+</div>
+
+</body>
+</html>

@@ -1,2177 +1,2813 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>HIDEAWAY — Pitch Deck</title>
-
-<style>
-
-/* =========================================================
-   RESET
-========================================================= */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #11110f;
-    color: #f4f0e8;
-}
-
-
-/* =========================================================
-   GLOBAL
-========================================================= */
-
-.slide {
-    width: 100vw;
-    min-height: 100vh;
-    position: relative;
-    overflow: hidden;
-
-    background:
-        radial-gradient(
-            circle at 75% 45%,
-            rgba(100, 87, 62, 0.15),
-            transparent 38%
-        ),
-        linear-gradient(
-            120deg,
-            #11110f 0%,
-            #171612 50%,
-            #0d0d0c 100%
-        );
-
-    padding: 150px 10vw 100px;
-}
-
-.texture {
-    position: absolute;
-    inset: 0;
-    opacity: 0.035;
-
-    background-image:
-        repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 2px,
-            #ffffff 3px
-        );
-
-    pointer-events: none;
-}
-
-.circle {
-    position: absolute;
-    width: 520px;
-    height: 520px;
-    right: -160px;
-    top: 50%;
-    transform: translateY(-50%);
-
-    background-image: url("images/hlogo.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-
-    opacity: 0.045;
-    filter: grayscale(1);
-    pointer-events: none;
-}
-
-.circle::before {
-    content: "";
-
-    position: absolute;
-    inset: 35px;
-
-    border: 1px solid rgba(205, 187, 145, 0.08);
-    border-radius: 50%;
-}
-
-
-/* =========================================================
-   NAVIGATION
-========================================================= */
-
-.top-nav {
-    position: fixed;
-
-    top: 0;
-    left: 0;
-
-    width: 100%;
-
-    height: 105px;
-
-    padding: 25px 7vw;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    z-index: 100;
-
-    background:
-        linear-gradient(
-            to bottom,
-            rgba(17,17,15,0.98),
-            rgba(17,17,15,0)
-        );
-}
-
-
-/* SMALL H LOGO */
-
-.nav-logo {
-    width: 42px;
-    height: 42px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.nav-logo img {
-    width: 38px;
-    height: 38px;
-
-    object-fit: contain;
-    display: block;
-}
-
-
-/* NAV LINKS */
-
-.nav-links {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-
-    gap: 4px;
-}
-
-.nav-links a {
-    display: block;
-
-    padding: 15px 20px;
-
-    color: #8f8b82;
-
-    text-decoration: none;
-
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-
-    border: 1px solid transparent;
-
-    transition: all 0.3s ease;
-}
-
-.nav-links a:hover {
-    color: #cbbd9e;
-}
-
-.nav-links a.active {
-    color: #cbbd9e;
-
-    border: 1px solid rgba(189, 168, 121, 0.45);
-}
-
-
-/* =========================================================
-   CONTENT
-========================================================= */
-
-.content {
-    width: min(1200px, 100%);
-    position: relative;
-    z-index: 2;
-}
-
-
-/* =========================================================
-   BRAND PAGE
-========================================================= */
-
-.brand-page {
-    min-height: 100vh;
-
-    display: flex;
-    align-items: center;
-}
-
-.eyebrow {
-    font-size: 11px;
-    letter-spacing: 5px;
-
-    text-transform: uppercase;
-
-    color: #bda879;
-
-    margin-bottom: 32px;
-}
-
-.brand {
-    font-family: Georgia, "Times New Roman", serif;
-
-    font-size: clamp(80px, 10vw, 110px);
-
-    font-weight: 400;
-
-    letter-spacing: 14px;
-
-    line-height: 0.9;
-
-    color: #f4f0e8;
-}
-
-.tagline {
-    margin-top: 32px;
-
-    font-family: Georgia, "Times New Roman", serif;
-
-    font-size: clamp(24px, 3vw, 42px);
-
-    font-style: italic;
-
-    color: #cbbd9e;
-}
-
-.divider {
-    width: 80px;
-    height: 1px;
-
-    background: #bda879;
-
-    margin: 38px 0;
-
-    opacity: 0.7;
-}
-
-.story {
-    max-width: 720px;
-
-    font-size: 15px;
-
-    line-height: 1.9;
-
-    color: #b7b3aa;
-
-    font-weight: 300;
-}
-
-
-/* =========================================================
-   SECTION CONTENT
-========================================================= */
-
-.section-inner {
-    position: relative;
-    z-index: 2;
-
-    width: min(1200px, 100%);
-
-    margin: 0 auto;
-}
-
-.section-number {
-    font-size: 10px;
-
-    letter-spacing: 5px;
-
-    color: #bda879;
-
-    margin-bottom: 25px;
-}
-
-
-/* ALL BIG TITLES SAME SIZE */
-
-.section-title {
-    font-family: Georgia, "Times New Roman", serif;
-
-    font-size: clamp(60px, 6vw, 60px);
-
-    font-weight: 400;
-
-    line-height: 0.95;
-
-    color: #f4f0e8;
-
-    max-width: 1100px;
-
-    margin-bottom: 35px;
-}
-
-
-/* SUBTITLE */
-
-.section-subtitle {
-    max-width: 900px;
-
-    font-family: Georgia, "Times New Roman", serif;
-
-    font-size: 18px;
-
-    line-height: 1.5;
-
-    font-style: italic;
-
-    color: #cbbd9e;
-
-    margin-bottom: 45px;
-}
-
-
-/* BODY */
-
-.section-text {
-    max-width: 950px;
-
-    font-size: 13px;
-
-    line-height: 1.9;
-
-    color: #b7b3aa;
-}
-
-
-/* =========================================================
-   OPPORTUNITY
-========================================================= */
-
-.opportunity-page {
-    display: flex;
-    align-items: center;
-}
-
-.opportunity-page .section-inner {
-    width: 92%;
-}
-
-.opportunity-layout {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 0.95fr 1.05fr;
-    gap: 180px;
-    align-items: start;
-}
-
-
-/* =========================================================
-   LEFT SIDE
-========================================================= */
-
-.opportunity-left {
-    max-width: 560px;
-}
-
-.opportunity-left .section-number {
-    margin-bottom: 25px;
-}
-
-.opportunity-title {
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: clamp(52px, 5.5vw, 78px);
-    font-weight: 400;
-    line-height: 0.92;
-    color: #f4f0e8;
-    margin-bottom: 30px;
-}
-
-.opportunity-intro {
-    max-width: 500px;
-    font-size: 13px;
-    line-height: 1.8;
-    color: #aaa69e;
-}
-
-.opportunity-intro strong {
-    color: #cbbd9e;
-    font-weight: 400;
-}
-
-
-/* =========================================================
-   TOURISM GROWTH
-========================================================= */
-
-.opportunity-growth {
-    margin-top: 50px;
-    padding-top: 25px;
-    border-top: 1px solid rgba(189, 168, 121, 0.18);
-}
-
-.growth-heading {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 22px;
-}
-
-.growth-heading span:first-child {
-    font-size: 9px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: #bda879;
-}
-
-.growth-heading span:last-child {
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 12px;
-    font-style: italic;
-    color: #8f8b82;
-}
-
-.growth-chart {
-    height: 145px;
-    display: flex;
-    align-items: flex-end;
-    gap: 12px;
-}
-
-.growth-year {
-    flex: 1;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-}
-
-.growth-bar-wrap {
-    height: 115px;
-    display: flex;
-    align-items: flex-end;
-}
-
-.growth-bar {
-    width: 100%;
-    min-height: 3px;
-    background: rgba(189, 168, 121, 0.55);
-    border-top: 1px solid #cbbd9e;
-}
-
-.growth-bar.current {
-    background: #cbbd9e;
-}
-
-.growth-value {
-    margin-bottom: 7px;
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 9px;
-    color: #cbbd9e;
-    text-align: center;
-}
-
-.growth-label {
-    margin-top: 7px;
-    font-size: 8px;
-    letter-spacing: 2px;
-    color: #706d65;
-    text-align: center;
-}
-
-
-/* =========================================================
-   RIGHT SIDE
-========================================================= */
-
-.opportunity-right {
-    width: 92%;
-}
-
-.opportunity-stats {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    border: 1px solid rgba(189, 168, 121, 0.22);
-    background: rgba(189, 168, 121, 0.18);
-    gap: 1px;
-}
-
-.opportunity-stat {
-    min-height: 95px;
-    padding: 18px;
-    background: rgba(20, 20, 18, 0.88);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.opportunity-stat.large {
-    grid-column: span 2;
-    min-height: 105px;
-}
-
-.opportunity-stat-value {
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: clamp(32px, 3vw, 44px);
-    font-weight: 400;
-    line-height: 1;
-    color: #f4f0e8;
-    margin-bottom: 10px;
-}
-
-.opportunity-stat-label {
-    font-size: 8px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: #bda879;
-}
-
-.opportunity-stat-detail {
-    margin-top: 7px;
-    max-width: 240px;
-    font-size: 10px;
-    line-height: 1.5;
-    color: #77736b;
-}
-
-
-/* =========================================================
-   INTERNATIONAL RECOGNITION
-========================================================= */
-
-.opportunity-recognition {
-    margin-top: 22px;
-    padding-top: 18px;
-    border-top: 1px solid rgba(189, 168, 121, 0.15);
-}
-
-.recognition-label {
-    font-size: 14px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: #706d65;
-    margin-bottom: 10px;
-}
-
-.recognition-title {
-    max-width: 500px;
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 30px;
-    line-height: 1.3;
-    color: #cbbd9e;
-    margin-bottom: 10px;
-}
-
-.recognition-title strong {
-    color: #f4f0e8;
-    font-weight: 400;
-}
-
-.recognition-source {
-    font-size: 14px;
-    letter-spacing: 3px;
-    color: #706d65;
-}
-
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
-@media (max-width: 1100px) {
-
-    .opportunity-layout {
-        grid-template-columns: 1fr;
-        gap: 45px;
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HIDEAWAY — Pitch Deck</title>
+
+    <style>
+
+    /* =========================================================
+    RESET
+    ========================================================= */
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
     }
 
-    .opportunity-left {
-        max-width: 700px;
+    html {
+        scroll-behavior: smooth;
     }
 
-    .opportunity-right {
-        width: 100%;
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #11110f;
+        color: #f4f0e8;
     }
 
-    .opportunity-growth {
-        margin-top: 45px;
-    }
-}
 
-@media (max-width: 700px) {
-
-    .opportunity-title {
-        font-size: 52px;
-    }
-
-    .opportunity-stats {
-        grid-template-columns: 1fr;
-    }
-
-    .opportunity-stat.large {
-        grid-column: span 1;
-    }
-
-    .opportunity-stat {
-        min-height: 150px;
-    }
-
-    .growth-chart {
-        gap: 7px;
-    }
-
-    .recognition-title {
-        font-size: 17px;
-    }
-}
-/* =========================================================
-   GAP
-========================================================= */
-
-.gap-page {
-    display: flex;
-    align-items: center;
-}
-
-
-/* =========================================================
-   MAIN GAP LAYOUT
-========================================================= */
-
-.gap-inner {
-    width: min(1350px, 100%);
-    margin-left: 0;
-    margin-right: auto;
-
-    display: grid;
-    grid-template-columns: 0.80fr 1.40fr;
-    gap: 70px;
-
-    align-items: center;
-}
-
-
-/* =========================================================
-   LEFT — STATEMENT
-========================================================= */
-
-.gap-header {
-    max-width: 470px;
-}
-
-.gap-header .section-number {
-    margin-bottom: 32px;
-}
-
-.gap-title {
-    font-family: Georgia, "Times New Roman", serif;
-
-    font-size: clamp(48px, 3vw, 65px);
-    font-weight: 400;
-    line-height: 0.94;
-
-    color: #f4f0e8;
-
-    margin: 0;
-}
-
-.gap-title em {
-    display: block;
-
-    margin-top: 8px;
-
-    color: #cbbd9e;
-    font-style: italic;
-}
-
-.gap-line {
-    width: 50px;
-    height: 1px;
-
-    background: #bda879;
-
-    margin: 40px 0 30px;
-}
-
-.gap-intro {
-    max-width: 400px;
-
-    margin: 0;
-
-    font-size: 13px;
-    line-height: 1.9;
-
-    color: #9f9b92;
-}
-
-
-/* =========================================================
-   RIGHT VISUAL
-========================================================= */
-
-.gap-visual {
-    position: relative;
-
-    width: 100%;
-    height: 560px;
-}
-
-
-/* =========================================================
-   THREE PIECES
-========================================================= */
-
-.gap-piece {
-    position: absolute;
-
-    left: 0;
-
-    display: flex;
-    align-items: center;
-
-    gap: 2px;
-
-    z-index: 3;
-}
-
-
-/* FOOD */
-
-.gap-food {
-    top: 45px;
-}
-
-
-/* NIGHTLIFE */
-
-.gap-nightlife {
-    top: 205px;
-}
-
-
-/* DESIGN */
-
-.gap-design {
-    top: 365px;
-}
-
-
-/* =========================================================
-   EMPTY PHOTO CIRCLES
-========================================================= */
-
-.gap-image {
-    width: 170px;
-    height: 170px;
-    flex-shrink: 0;
-    border-radius: 50%;
-    border: 1px solid rgba(189, 168, 121, 0.7);
-    background: transparent;
-    overflow: hidden;
-}
-
-.gap-image img {
-    width: 120%;
-    height: 120%;
-
-    object-fit: cover;
-
-    display: block;
-}
-
-
-/* =========================================================
-   PIECE TEXT
-========================================================= */
-
-.gap-piece-copy {
-    width: 190px;
-}
-
-.gap-piece-title {
-    font-size: 11px;
-
-    letter-spacing: 4px;
-
-    color: #f4f0e8;
-
-    margin-bottom: 10px;
-}
-
-.gap-piece-copy p {
-    margin: 0;
-
-    font-size: 12px;
-    line-height: 1.65;
-
-    color: #9f9b92;
-}
-
-
-/* =========================================================
-   CURVED CONNECTOR
-========================================================= */
-
-.gap-connector {
-    position: absolute;
-
-    left: 285px;
-    top: 30px;
-
-    width: 360px;
-    height: 500px;
-
-    z-index: 2;
-
-    pointer-events: none;
-}
-
-.gap-connector svg {
-    width: 90%;
-    height: 90%;
-
-    display: block;
-
-    overflow: visible;
-}
-
-.gap-connector path {
-    fill: none;
-
-    stroke: rgba(189, 168, 121, 0.72);
-
-    stroke-width: 1.3;
-
-    vector-effect: non-scaling-stroke;
-}
-
-.gap-connector circle {
-    fill: #cbbd9e;
-}
-
-
-/* =========================================================
-   OPPORTUNITY
-========================================================= */
-
-.gap-opportunity {
-    position: absolute;
-
-    right: 0;
-    top: 50%;
-
-    transform: translateY(-50%);
-
-    width: 330px;
-
-    text-align: center;
-
-    z-index: 4;
-
-    /* NO BORDER HERE */
-}
-
-
-/* =========================================================
-   OPPORTUNITY TEXT
-========================================================= */
-
-.gap-opportunity-label {
-    font-size: 10px;
-
-    letter-spacing: 5px;
-
-    color: #bda879;
-
-    margin-bottom: 18px;
-}
-
-.gap-opportunity-text {
-    font-family: Georgia, "Times New Roman", serif;
-
-    font-size: 27px;
-    line-height: 1.3;
-
-    color: #f4f0e8;
-}
-
-
-/* =========================================================
-   VERTICAL ACCENT LINE
-========================================================= */
-
-.gap-opportunity-line {
-    width: 1px;
-    height: 55px;
-
-    background: rgba(189, 168, 121, 0.65);
-
-    margin: 25px auto;
-}
-
-
-/* =========================================================
-   HIDEAWAY
-========================================================= */
-
-.gap-brand {
-    font-family: Georgia, "Times New Roman", serif;
-
-    font-size: 43px;
-
-    letter-spacing: 7px;
-
-    color: #cbbd9e;
-
-    margin-bottom: 14px;
-}
-
-.gap-brand-subtitle {
-    font-size: 9px;
-
-    letter-spacing: 5px;
-
-    line-height: 1.8;
-
-    color: #8f8b82;
-}
-
-
-/* =========================================================
-   BOTTOM ELEMENTS
-========================================================= */
-
-.gap-elements {
-    margin-top: 42px;
-
-    font-size: 9px;
-
-    letter-spacing: 3px;
-
-    color: #8f8b82;
-
-    white-space: nowrap;
-}
-
-
-/* =========================================================
-   REMOVE ANY OLD CONNECTOR / VERTICAL LINE
-========================================================= */
-
-.gap-page .connector-line,
-.gap-page .connector-point {
-    display: none !important;
-}
-
-.gap-page .gap-opportunity {
-    border-left: none !important;
-}
-
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
-@media (max-width: 1200px) {
-
-    .gap-inner {
-        grid-template-columns: 0.8fr 1.2fr;
-        gap: 40px;
-    }
-
-    .gap-image {
-        width: 130px;
-        height: 130px;
-    }
-
-    .gap-connector {
-        left: 200px;
-        width: 300px;
-    }
-
-    .gap-opportunity {
-        width: 300px;
-    }
-
-    .gap-brand {
-        font-size: 36px;
-    }
-}
-
-
-@media (max-width: 900px) {
-
-    .gap-inner {
-        grid-template-columns: 1fr;
-    }
-
-    .gap-header {
-        max-width: 650px;
-    }
-
-    .gap-visual {
-        margin-top: 50px;
-    }
-}
-
-
-@media (max-width: 700px) {
-
-    .gap-title {
-        font-size: 52px;
-    }
-
-    .gap-visual {
-        height: 700px;
-    }
-
-    .gap-image {
-        width: 100px;
-        height: 100px;
-    }
-
-    .gap-piece {
-        gap: 10px;
-    }
-
-    .gap-connector {
-        left: 80px;
-        width: 280px;
-    }
-
-    .gap-opportunity {
-        width: 100%;
-        top: auto;
-        bottom: 0;
-        transform: none;
-    }
-
-    .gap-brand {
-        font-size: 34px;
-    }
-
-    .gap-elements {
-        white-space: normal;
-        line-height: 1.8;
-    }
-}
-/* =========================================================
-   OPPORTUNITY
-========================================================= */
-
-.gap-opportunity {
-    position: absolute;
-
-    right: 0;
-    top: 50%;
-
-    transform: translateY(-50%);
-
-    width: 360px;
-
-    text-align: center;
-
-    z-index: 4;
-}
-
-
-/* SMALL LABEL */
-
-.gap-opportunity-label {
-    font-size: 10px;
-
-    letter-spacing: 5px;
-
-    color: #bda879;
-
-    margin-bottom: 18px;
-}
-
-
-/* MAIN SENTENCE */
-
-.gap-opportunity-text {
-    font-family: Georgia, "Times New Roman", serif;
-
-    font-size: 27px;
-
-    line-height: 1.3;
-
-    color: #f4f0e8;
-}
-
-
-/* TOP / BOTTOM SHORT LINES */
-
-.gap-opportunity-line {
-    width: 1px;
-    height: 55px;
-
-    background: rgba(189, 168, 121, 0.6);
-
-    margin: 25px auto;
-}
-
-
-/* HIDEAWAY */
-
-.gap-brand {
-    font-family: Georgia, "Times New Roman", serif;
-
-    font-size: 43px;
-
-    letter-spacing: 7px;
-
-    color: #cbbd9e;
-
-    margin-bottom: 14px;
-}
-
-
-/* SUBTITLE */
-
-.gap-brand-subtitle {
-    font-size: 9px;
-
-    letter-spacing: 5px;
-
-    color: #8f8b82;
-
-    line-height: 1.8;
-}
-
-
-/* ELEMENTS */
-
-.gap-elements {
-    margin-top: 50px;
-
-    font-size: 9px;
-
-    letter-spacing: 3px;
-
-    color: #8f8b82;
-
-    white-space: nowrap;
-}
-
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
-@media (max-width: 1200px) {
-
-    .gap-inner {
-        grid-template-columns: 0.8fr 1.2fr;
-        gap: 40px;
-    }
-
-    .gap-image {
-   width: 100px;
-height: 100px;
-flex: 0 0 150px;
-
-    border-radius: 100%;
-    overflow: hidden;
-
-    background: transparent;
-}
-
-.gap-image img {
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-    display: block;
-
-    border-radius: 50%;
-}
-
-    .gap-connector {
-        left: 250px;
-        width: 320px;
-    }
-
-    .gap-opportunity {
-        width: 320px;
-    }
-
-    .gap-brand {
-        font-size: 36px;
-    }
-}
-
-
-@media (max-width: 900px) {
-
-    .gap-inner {
-        grid-template-columns: 1fr;
-    }
-
-    .gap-header {
-        max-width: 600px;
-    }
-
-    .gap-visual {
-        margin-top: 50px;
-    }
-}
-
-/* =========================================================
-   OPPORTUNITY
-========================================================= */
-
-.gap-opportunity {
-    position: absolute;
-
-    right: 0;
-
-    top: 50%;
-
-    transform: translateY(-50%);
-
-    width: 48%;
-
-    text-align: center;
-
-    z-index: 3;
-}
-
-.gap-opportunity-label {
-    font-size: 9px;
-
-    letter-spacing: 5px;
-
-    color: #bda879;
-
-    margin-bottom: 14px;
-}
-
-.gap-opportunity-text {
-    font-family: Georgia, "Times New Roman", serif;
-
-    font-size: 22px;
-
-    color: #cbbd9e;
-}
-
-.gap-opportunity-line {
-    width: 1px;
-    height: 55px;
-
-    background: rgba(189, 168, 121, 0.55);
-
-    margin: 22px auto;
-}
-
-.gap-brand {
-    font-family: Georgia, "Times New Roman", serif;
-
-    font-size: clamp(42px, 4vw, 62px);
-
-    letter-spacing: 5px;
-
-    color: #cbbd9e;
-}
-
-.gap-brand-subtitle {
-    margin-top: 14px;
-
-    font-size: 9px;
-
-    letter-spacing: 5px;
-
-    color: #bda879;
-}
-
-.gap-elements {
-    margin-top: 42px;
-
-    font-size: 9px;
-
-    letter-spacing: 3px;
-
-    color: #706d65;
-
-    white-space: nowrap;
-}
-
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
-@media (max-width: 1100px) {
-
-    .gap-inner {
-        grid-template-columns: 1fr;
-        gap: 60px;
-    }
-
-    .gap-header {
-        max-width: 700px;
-    }
-
-    .gap-visual {
-        min-height: 500px;
-    }
-}
-
-
-@media (max-width: 700px) {
-
-    .gap-title {
-        font-size: 52px;
-    }
-
-    .gap-visual {
-        min-height: 650px;
-    }
-
-    .gap-piece {
-        gap: 15px;
-    }
-
-    .gap-image {
-        width: 120px;
-        height: 120px;
-    }
-
-    .gap-connector {
-        left: 105px;
-    }
-
-    .gap-opportunity {
-        width: 50%;
-    }
-
-    .gap-brand {
-        font-size: 36px;
-        letter-spacing: 3px;
-    }
-
-    .gap-elements {
-        white-space: normal;
-        line-height: 1.8;
-    }
-}
-
-
-/* =========================================================
-   OPPORTUNITY
-========================================================= */
-
-.gap-opportunity {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 270px;
-    padding-left: 35px;
-    border-left: 1px solid rgba(189,168,121,0.3);
-}
-
-.gap-opportunity-label {
-    font-size: 9px;
-    letter-spacing: 4px;
-    color: #706d65;
-    margin-bottom: 15px;
-}
-
-.gap-opportunity-text {
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 29px;
-    line-height: 1.15;
-    color: #f4f0e8;
-}
-
-.gap-opportunity-line {
-    width: 45px;
-    height: 1px;
-    background: #bda879;
-    margin: 22px 0;
-}
-
-.gap-brand {
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 22px;
-    letter-spacing: 5px;
-    color: #cbbd9e;
-}
-
-.gap-brand-subtitle {
-    margin-top: 7px;
-    font-size: 8px;
-    letter-spacing: 2px;
-    color: #706d65;
-}
-
-.gap-elements {
-    margin-top: 25px;
-    font-size: 8px;
-    line-height: 1.8;
-    letter-spacing: 2px;
-    color: #8f8b82;
-}
-
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
-@media (max-width: 1100px) {
-
-    .gap-layout {
-        grid-template-columns: 1fr;
-        gap: 60px;
-    }
-
-    .gap-header {
-        max-width: 700px;
-    }
-
-    .gap-visual {
-        min-height: 500px;
-    }
-}
-
-@media (max-width: 700px) {
-
-    .gap-title {
-        font-size: 52px;
-    }
-
-    .gap-visual {
-        min-height: 650px;
-        transform: scale(0.85);
-        transform-origin: top left;
-    }
-}
-
-
-
-/* =========================================================
-   SPACE
-========================================================= */
-
-.space-copy {
-    max-width: 950px;
-}
-
-.layout-wrapper {
-    margin-top: 45px;
-
-    width: 100%;
-
-    display: flex;
-
-    justify-content: center;
-}
-
-.layout-image {
-    width: 100%;
-
-    max-width: 1100px;
-
-    height: auto;
-
-    display: block;
-
-    border: 1px solid rgba(189, 168, 121, 0.25);
-
-    box-shadow:
-        0 30px 80px rgba(0,0,0,0.35);
-}
-
-
-/* =========================================================
-   BUSINESS
-========================================================= */
-
-.business-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 20px;
-
-    margin-top: 55px;
-}
-
-.business-card {
-    padding: 40px 35px;
-
-    min-height: 260px;
-
-    border-top: 1px solid rgba(189, 168, 121, 0.35);
-
-    background:
-        linear-gradient(
-            to bottom,
-            rgba(30,29,25,0.5),
-            rgba(20,20,18,0.15)
-        );
-}
-
-.business-card h3 {
-    font-family: Georgia, "Times New Roman", serif;
-
-    font-size: 32px;
-
-    font-weight: 400;
-
-    margin-bottom: 20px;
-
-    color: #f4f0e8;
-}
-
-.business-card p {
-    font-size: 14px;
-
-    line-height: 1.8;
-
-    color: #9f9b92;
-}
-
-
-/* =========================================================
-   INVESTMENT
-========================================================= */
-
-.investment-copy {
-    max-width: 850px;
-}
-
-.investment-copy p {
-    font-size: 17px;
-
-    line-height: 1.9;
-
-    color: #b7b3aa;
-
-    margin-bottom: 30px;
-}
-
-.investment-brand {
-    margin-top: 70px;
-
-    font-family: Georgia, "Times New Roman", serif;
-
-    font-size: 20px;
-
-    letter-spacing: 4px;
-
-    color: #cbbd9e;
-}
-
-
-/* =========================================================
-   FOOTER / PAGE NUMBER
-========================================================= */
-
-.location {
-    position: absolute;
-
-    bottom: 40px;
-    left: 7vw;
-
-    z-index: 3;
-
-    font-size: 10px;
-
-    letter-spacing: 3px;
-
-    text-transform: uppercase;
-
-    color: #706d65;
-}
-
-.page {
-    position: absolute;
-
-    bottom: 40px;
-    right: 7vw;
-
-    font-size: 10px;
-
-    letter-spacing: 3px;
-
-    color: #706d65;
-}
-
-
-/* =========================================================
-   ANIMATION
-========================================================= */
-
-.content,
-.section-inner {
-    animation: reveal 1s ease forwards;
-}
-
-@keyframes reveal {
-
-    from {
-        opacity: 0;
-        transform: translateY(25px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 900px) {
-
-    .top-nav {
-        padding: 20px 4vw;
-    }
-
-    .nav-links {
-        gap: 0;
-    }
-
-    .nav-links a {
-        padding: 10px 8px;
-        font-size: 8px;
-        letter-spacing: 1.5px;
-    }
+    /* =========================================================
+    GLOBAL
+    ========================================================= */
 
     .slide {
-        padding: 140px 7vw 90px;
+        width: 100vw;
+        min-height: 100vh;
+        position: relative;
+        overflow: hidden;
+
+        background:
+            radial-gradient(
+                circle at 75% 45%,
+                rgba(100, 87, 62, 0.15),
+                transparent 38%
+            ),
+            linear-gradient(
+                120deg,
+                #11110f 0%,
+                #171612 50%,
+                #0d0d0c 100%
+            );
+
+        padding: 150px 10vw 100px;
     }
 
-    .section-title {
-        font-size: clamp(55px, 10vw, 85px);
+    .texture {
+        position: absolute;
+        inset: 0;
+        opacity: 0.035;
+
+        background-image:
+            repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                #ffffff 3px
+            );
+
+        pointer-events: none;
     }
 
-    .gap-grid,
-    .business-grid {
-        grid-template-columns: 1fr;
+    .circle {
+        position: absolute;
+        width: 520px;
+        height: 520px;
+        right: -160px;
+        top: 50%;
+        transform: translateY(-50%);
+
+        background-image: url("images/hlogo.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+
+        opacity: 0.045;
+        filter: grayscale(1);
+        pointer-events: none;
     }
 
-}
+    .circle::before {
+        content: "";
 
-@media (max-width: 600px) {
+        position: absolute;
+        inset: 35px;
 
-    .nav-logo {
-        display: none;
+        border: 1px solid rgba(205, 187, 145, 0.08);
+        border-radius: 50%;
     }
+
+
+    /* =========================================================
+    NAVIGATION
+    ========================================================= */
 
     .top-nav {
-        justify-content: flex-end;
+        position: fixed;
+
+        top: 0;
+        left: 0;
+
+        width: 100%;
+
+        height: 105px;
+
+        padding: 25px 7vw;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        z-index: 100;
+
+        background:
+            linear-gradient(
+                to bottom,
+                rgba(17,17,15,0.98),
+                rgba(17,17,15,0)
+            );
     }
 
+
+    /* SMALL H LOGO */
+
+    .nav-logo {
+        width: 42px;
+        height: 42px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-logo img {
+        width: 38px;
+        height: 38px;
+
+        object-fit: contain;
+        display: block;
+    }
+
+
+    /* NAV LINKS */
+
     .nav-links {
-        width: 100%;
+        display: flex;
+        align-items: center;
         justify-content: flex-end;
-        flex-wrap: wrap;
+
+        gap: 4px;
     }
 
     .nav-links a {
-        padding: 8px 6px;
+        display: block;
+
+        padding: 15px 20px;
+
+        color: #8f8b82;
+
+        text-decoration: none;
+
+        font-size: 10px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+
+        border: 1px solid transparent;
+
+        transition: all 0.3s ease;
+    }
+
+    .nav-links a:hover {
+        color: #cbbd9e;
+    }
+
+    .nav-links a.active {
+        color: #cbbd9e;
+
+        border: 1px solid rgba(189, 168, 121, 0.45);
+    }
+
+
+    /* =========================================================
+    CONTENT
+    ========================================================= */
+
+    .content {
+        width: min(1200px, 100%);
+        position: relative;
+        z-index: 2;
+    }
+
+
+    /* =========================================================
+    BRAND PAGE
+    ========================================================= */
+
+    .brand-page {
+        min-height: 100vh;
+
+        display: flex;
+        align-items: center;
+    }
+
+    .eyebrow {
+        font-size: 11px;
+        letter-spacing: 5px;
+
+        text-transform: uppercase;
+
+        color: #bda879;
+
+        margin-bottom: 32px;
     }
 
     .brand {
-        font-size: 65px;
-        letter-spacing: 7px;
+        font-family: Georgia, "Times New Roman", serif;
+
+        font-size: clamp(65px, 7vw, 90px);
+
+        font-weight: 400;
+
+        letter-spacing: 13px;
+
+        line-height: 0.9;
+
+        color: #f4f0e8;
     }
+
+    .tagline {
+        margin-top: 32px;
+
+        font-family: Georgia, "Times New Roman", serif;
+
+        font-size: clamp(20px, 2vw, 38px);
+
+        font-style: italic;
+
+        color: #cbbd9e;
+    }
+
+    .divider {
+        width: 80px;
+        height: 1px;
+
+        background: #bda879;
+
+        margin: 38px 0;
+
+        opacity: 0.7;
+    }
+
+    .story {
+        max-width: 720px;
+
+        font-size: 14px;
+
+        line-height: 1.9;
+
+        color: #b7b3aa;
+
+        font-weight: 300;
+    }
+
+
+    /* =========================================================
+    SECTION CONTENT
+    ========================================================= */
+
+    .section-inner {
+        position: relative;
+        z-index: 2;
+
+        width: min(1200px, 100%);
+
+        margin: 0 auto;
+    }
+
+    .section-number {
+        font-size: 10px;
+
+        letter-spacing: 5px;
+
+        color: #bda879;
+
+        margin-bottom: 25px;
+    }
+
+
+    /* ALL BIG TITLES SAME SIZE */
 
     .section-title {
-        font-size: 55px;
+        font-family: Georgia, "Times New Roman", serif;
+
+        font-size: clamp(56px, 5vw, 58px);
+
+        font-weight: 400;
+
+        line-height: 0.95;
+
+        color: #f4f0e8;
+
+        max-width: 1100px;
+
+        margin-bottom: 30px;
     }
 
+
+    /* SUBTITLE */
+
+    .section-subtitle {
+        max-width: 560px;
+
+        font-family: Georgia, "Times New Roman", serif;
+
+        font-size: 23px;
+
+        line-height: 1.5;
+
+        font-style: italic;
+
+        color: #cbbd9e;
+
+        margin-bottom: 45px;
+    }
+
+
+    /* BODY */
+
+    .section-text {
+        max-width: 900px;
+
+        font-size: 9px;
+
+        line-height: 1.9;
+
+        color: #b7b3aa;
+    }
+
+
+    /* =========================================================
+    OPPORTUNITY
+    ========================================================= */
+
+    .opportunity-page {
+        display: flex;
+        align-items: center;
+    }
+
+    .opportunity-page .section-inner {
+        width: 92%;
+    }
+
+    .opportunity-layout {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 0.95fr 1.05fr;
+        gap: 40px;
+        align-items: start;
+    }
+
+
+    /* =========================================================
+    LEFT SIDE
+    ========================================================= */
+
+    .opportunity-left {
+        max-width: 500px;
+    }
+
+    .opportunity-left .section-number {
+        margin-bottom: 25px;
+    }
+
+    .opportunity-title {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(49px, 4vw, 70px);
+        font-weight: 400;
+        line-height: 0.92;
+        color: #f4f0e8;
+        margin-bottom: 45   px;
+    }
+
+    .opportunity-intro {
+        max-width: 500px;
+        font-size: 13px;
+        line-height: 1.8;
+        margin-top: 35px;
+        color: #aaa69e;
+    }
+
+    .opportunity-intro strong {
+        color: #cbbd9e;
+        font-weight: 400;
+    }
+
+
+    /* =========================================================
+    TOURISM GROWTH
+    ========================================================= */
+
+    .opportunity-growth {
+        margin-top: 50px;
+        padding-top: 25px;
+        border-top: 1px solid rgba(189, 168, 121, 0.18);
+    }
+
+    .growth-heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 22px;
+    }
+
+    .growth-heading span:first-child {
+        font-size: 9px;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: #bda879;
+    }
+
+    .growth-heading span:last-child {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 12px;
+        font-style: italic;
+        color: #8f8b82;
+    }
+
+    .growth-chart {
+        height: 145px;
+        display: flex;
+        align-items: flex-end;
+        gap: 12px;
+    }
+
+    .growth-year {
+        flex: 1;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    .growth-bar-wrap {
+        height: 115px;
+        display: flex;
+        align-items: flex-end;
+    }
+
+    .growth-bar {
+        width: 100%;
+        min-height: 3px;
+        background: rgba(189, 168, 121, 0.55);
+        border-top: 1px solid #cbbd9e;
+    }
+
+    .growth-bar.current {
+        background: #cbbd9e;
+    }
+
+    .growth-value {
+        margin-bottom: 7px;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 9px;
+        color: #cbbd9e;
+        text-align: center;
+    }
+
+    .growth-label {
+        margin-top: 7px;
+        font-size: 8px;
+        letter-spacing: 2px;
+        color: #706d65;
+        text-align: center;
+    }
+
+
+    /* =========================================================
+    RIGHT SIDE
+    ========================================================= */
+
+   .opportunity-right {
+    width: 92%;
+    transform: translateX(75px) scale(0.90);
+    transform-origin: top left;
 }
+
+    .opportunity-stats {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        border: 1px solid rgba(189, 168, 121, 0.22);
+        background: rgba(189, 168, 121, 0.18);
+        gap: 1px;
+    }
+
+    .opportunity-stat {
+        min-height: 95px;
+        padding: 18px;
+        background: rgba(20, 20, 18, 0.88);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .opportunity-stat.large {
+        grid-column: span 2;
+        min-height: 105px;
+    }
+
+    .opportunity-stat-value {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(32px, 3vw, 44px);
+        font-weight: 400;
+        line-height: 1;
+        color: #f4f0e8;
+        margin-bottom: 10px;
+    }
+
+    .opportunity-stat-label {
+        font-size: 8px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: #bda879;
+    }
+
+    .opportunity-stat-detail {
+        margin-top: 7px;
+        max-width: 240px;
+        font-size: 10px;
+        line-height: 1.5;
+        color: #77736b;
+    }
+
+
+    /* =========================================================
+    INTERNATIONAL RECOGNITION
+    ========================================================= */
+
+    .opportunity-recognition {
+        margin-top: 22px;
+        padding-top: 18px;
+        border-top: 1px solid rgba(189, 168, 121, 0.15);
+    }
+
+    .recognition-label {
+        font-size: 14px;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: #706d65;
+        margin-bottom: 10px;
+    }
+
+    .recognition-title {
+        max-width: 500px;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 30px;
+        line-height: 1.3;
+        color: #cbbd9e;
+        margin-bottom: 10px;
+    }
+
+    .recognition-title strong {
+        color: #f4f0e8;
+        font-weight: 400;
+    }
+
+    .recognition-source {
+        font-size: 14px;
+        letter-spacing: 3px;
+        color: #706d65;
+    }
+
+
+    /* =========================================================
+    RESPONSIVE
+    ========================================================= */
+
+    @media (max-width: 1100px) {
+
+        .opportunity-layout {
+            grid-template-columns: 1fr;
+            gap: 45px;
+        }
+
+        .opportunity-left {
+            max-width: 700px;
+        }
+
+        .opportunity-right {
+            width: 100%;
+        }
+
+        .opportunity-growth {
+            margin-top: 45px;
+        }
+    }
+
+    @media (max-width: 700px) {
+
+        .opportunity-title {
+            font-size: 52px;
+        }
+
+        .opportunity-stats {
+            grid-template-columns: 1fr;
+        }
+
+        .opportunity-stat.large {
+            grid-column: span 1;
+        }
+
+        .opportunity-stat {
+            min-height: 150px;
+        }
+
+        .growth-chart {
+            gap: 7px;
+        }
+
+        .recognition-title {
+            font-size: 17px;
+        }
+    }
+    /* =========================================================
+    GAP
+    ========================================================= */
+
+    .gap-page {
+        display: flex;
+        align-items: center;
+    }
+
+
+    /* =========================================================
+    MAIN GAP LAYOUT
+    ========================================================= */
+
+    .gap-inner {
+        width: min(1350px, 100%);
+        margin-left: 0;
+        margin-right: auto;
+
+        display: grid;
+        grid-template-columns: 0.80fr 1.40fr;
+        gap: 70px;
+
+        align-items: center;
+    }
+
+
+    /* =========================================================
+    LEFT — STATEMENT
+    ========================================================= */
+
+    .gap-header {
+        max-width: 470px;
+    }
+
+    .gap-header .section-number {
+        margin-bottom: 32px;
+    }
+
+    .gap-title {
+        font-family: Georgia, "Times New Roman", serif;
+
+        font-size: clamp(48px, 3vw, 65px);
+        font-weight: 400;
+        line-height: 0.94;
+
+        color: #f4f0e8;
+
+        margin: 0;
+    }
+
+    .gap-title em {
+        display: block;
+
+        margin-top: 8px;
+
+        color: #cbbd9e;
+        font-style: italic;
+    }
+
+    .gap-line {
+        width: 50px;
+        height: 1px;
+
+        background: #bda879;
+
+        margin: 40px 0 30px;
+    }
+
+    .gap-intro {
+        max-width: 400px;
+
+        margin: 0;
+
+        font-size: 13px;
+        line-height: 1.9;
+
+        color: #9f9b92;
+    }
+
+
+    /* =========================================================
+    RIGHT VISUAL
+    ========================================================= */
+
+    .gap-visual {
+        position: relative;
+
+        width: 100%;
+        height: 560px;
+    }
+
+
+    /* =========================================================
+    THREE PIECES
+    ========================================================= */
+
+    .gap-piece {
+        position: absolute;
+        left: -40px;
+        transform: translateY(-10px);
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        z-index: 3;
+    }
+
+    /* FOOD */
+
+    .gap-food {
+        top: 60px;
+    }
+
+
+    /* NIGHTLIFE */
+
+    .gap-nightlife {
+        top: 215px;
+    }
+
+
+    /* DESIGN */
+
+    .gap-design {
+        top: 385px;
+    }
+
+
+    /* =========================================================
+    EMPTY PHOTO CIRCLES
+    ========================================================= */
+
+    .gap-image {
+        width: 90px;
+        height: 90px;
+        flex-shrink: 0;
+        border-radius: 50%;
+        border: 1px solid rgba(189, 168, 121, 0.7);
+        background: transparent;
+        overflow: hidden;
+    }
+
+    .gap-image img {
+        width: 120%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }   
+    .gap-food .gap-image img {
+        object-position: center 100%;
+    }
+
+    /* =========================================================
+    PIECE TEXT
+    ========================================================= */
+
+    .gap-piece-copy {
+        width: 190px;
+    }
+
+    .gap-piece-title {
+        font-size: 11px;
+
+        letter-spacing: 4px;
+
+        color: #f4f0e8;
+
+        margin-bottom: 10px;
+    }
+
+    .gap-piece-copy p {
+        margin: 0;
+
+        font-size: 12px;
+        line-height: 1.65;
+
+        color: #9f9b92;
+    }
+
+
+    /* =========================================================
+    CURVED CONNECTOR
+    ========================================================= */
+
+    .gap-connector {
+        position: absolute;
+
+        left: 280px;
+        top: 70px;
+        width: 320px;
+        height: 450px;
+
+        z-index: 2;
+
+        pointer-events: none;
+    }
+
+    .gap-connector svg {
+        width: 70%;
+        height: 93%;
+
+        display: block;
+
+        overflow: visible;
+    }   
+
+    .gap-connector path {
+        fill: none;
+
+        stroke: rgba(189, 168, 121, 0.72);
+
+        stroke-width: 1.3;
+
+        vector-effect: non-scaling-stroke;
+    }
+
+    .gap-connector circle {
+        fill: #cbbd9e;
+    }
+
+
+    /* =========================================================
+    OPPORTUNITY
+    ========================================================= */
+
+    .gap-opportunity {
+        position: absolute;
+
+        right: 0;
+        top: 50%;
+
+        transform: translateY(-50%);
+
+        width: 330px;
+
+        text-align: center;
+
+        z-index: 4;
+
+        /* NO BORDER HERE */
+    }
+
+
+    /* =========================================================
+    OPPORTUNITY TEXT
+    ========================================================= */
+
+    .gap-opportunity-label {
+        font-size: 25px;
+
+        letter-spacing: 5px;
+
+        color: #bda879;
+
+        margin-bottom: 18px;
+    }
+
+    .gap-opportunity-text {
+        font-family: Georgia, "Times New Roman", serif;
+
+        font-size: 50px;
+        line-height: 1.3;
+
+        color: #f4f0e8;
+    }
+
+
+    /* =========================================================
+    VERTICAL ACCENT LINE
+    ========================================================= */
+
+    .gap-opportunity-line {
+        width: 1px;
+        height: 55px;
+
+        background: rgba(189, 168, 121, 0.65);
+
+        margin: 25px auto;
+    }
+
+
+    /* =========================================================
+    HIDEAWAY
+    ========================================================= */
+
+    .gap-brand {
+        font-family: Georgia, "Times New Roman", serif;
+
+        font-size: 50px;
+
+        letter-spacing: 10px;
+
+        color: #cbbd9e;
+
+        margin-bottom: 14px;
+    }
+
+    .gap-brand-subtitle {
+        font-size: 20px;
+
+        letter-spacing: 5px;
+
+        line-height: 1.8;
+
+        color: #8f8b82;
+    }
+
+
+    /* =========================================================
+    BOTTOM ELEMENTS
+    ========================================================= */
+
+    .gap-elements {
+        margin-top: 42px;
+
+        font-size: 9px;
+
+        letter-spacing: 3px;
+
+        color: #8f8b82;
+
+        white-space: nowrap;
+    }
+
+
+    /* =========================================================
+    REMOVE ANY OLD CONNECTOR / VERTICAL LINE
+    ========================================================= */
+
+    .gap-page .connector-line,
+    .gap-page .connector-point {
+        display: none !important;
+    }
+
+    .gap-page .gap-opportunity {
+        border-left: none !important;
+    }
+
+
+    /* =========================================================
+    RESPONSIVE
+    ========================================================= */
+
+    @media (max-width: 1200px) {
+
+        .gap-inner {
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 40px;
+        }
+
+        .gap-image {
+            width: 130px;
+            height: 130px;
+        }
+
+        .gap-connector {
+            left: 200px;
+            width: 300px;
+        }
+
+        .gap-opportunity {
+            width: 300px;
+        }
+
+        .gap-brand {
+            font-size: 36px;
+        }
+    }
+
+
+    @media (max-width: 900px) {
+
+        .gap-inner {
+            grid-template-columns: 1fr;
+        }
+
+        .gap-header {
+            max-width: 650px;
+        }
+
+        .gap-visual {
+            margin-top: 50px;
+        }
+    }
+
+
+    @media (max-width: 700px) {
+
+        .gap-title {
+            font-size: 52px;
+        }
+
+        .gap-visual {
+            height: 700px;
+        }
+
+        .gap-image {
+            width: 100px;
+            height: 100px;
+        }
+
+        .gap-piece {
+            gap: 20px;
+            left: 0;
+
+        }
+
+        .gap-connector {
+            left: 80px;
+            width: 280px;
+        }
+
+        .gap-opportunity {
+            width: 100%;
+            top: auto;
+            bottom: 0;
+            transform: none;
+        }
+
+        .gap-brand {
+            font-size: 34px;
+        }
+
+        .gap-elements {
+            white-space: normal;
+            line-height: 1.8;
+        }
+    }
+    /* =========================================================
+    OPPORTUNITY
+    ========================================================= */
+
+    .gap-opportunity {
+        position: absolute;
+
+        right: 0;
+        top: 50%;
+
+        transform: translateY(-50%);
+
+        width: 360px;
+
+        text-align: center;
+
+        z-index: 4;
+    }
+
+
+    /* SMALL LABEL */
+
+    .gap-opportunity-label {
+        font-size: 10px;
+
+        letter-spacing: 5px;
+
+        color: #bda879;
+
+        margin-bottom: 18px;
+    }
+
+
+    /* MAIN SENTENCE */
+
+    .gap-opportunity-text {
+        font-family: Georgia, "Times New Roman", serif;
+
+        font-size: 80px;
+
+        line-height: 1.3;
+
+        color: #f4f0e8;
+    }
+
+
+    /* TOP / BOTTOM SHORT LINES */
+
+    .gap-opportunity-line {
+        width: 1px;
+        height: 55px;
+
+        background: rgba(189, 168, 121, 0.6);
+
+        margin: 25px auto;
+    }
+
+
+    /* HIDEAWAY */
+
+    .gap-brand {
+        font-family: Georgia, "Times New Roman", serif;
+
+        font-size: 43px;
+
+        letter-spacing: 7px;
+
+        color: #cbbd9e;
+
+        margin-bottom: 14px;
+    }
+
+
+    /* SUBTITLE */
+
+    .gap-brand-subtitle {
+        font-size: 12px;
+
+        letter-spacing: 5px;
+
+        color: #8f8b82;
+
+        line-height: 1.8;
+    }
+
+
+    /* ELEMENTS */
+
+    .gap-elements {
+        margin-top: 50px;
+
+        font-size: 9px;
+
+        letter-spacing: 3px;
+
+        color: #8f8b82;
+
+        white-space: nowrap;
+    }
+
+
+    /* =========================================================
+    RESPONSIVE
+    ========================================================= */
+
+    @media (max-width: 1200px) {
+
+        .gap-inner {
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 40px;
+        }
+
+        .gap-image {
+    width: 100px;
+    height: 100px;
+    flex: 0 0 150px;
+
+        border-radius: 100%;
+        overflow: hidden;
+
+        background: transparent;
+    }
+
+    .gap-image img {
+        width: 100%;
+        height: 100%;
+
+        object-fit: cover;
+        display: block;
+
+        border-radius: 50%;
+    }
+
+        .gap-connector {
+            left: 250px;
+            width: 320px;
+        }
+
+        .gap-opportunity {
+            width: 320px;
+        }
+
+        .gap-brand {
+            font-size: 36px;
+        }
+    }
+
+
+    @media (max-width: 900px) {
+
+        .gap-inner {
+            grid-template-columns: 1fr;
+        }
+
+        .gap-header {
+            max-width: 600px;
+        }
+
+        .gap-visual {
+            margin-top: 50px;
+        }
+    }
+
+    /* =========================================================
+    OPPORTUNITY
+    ========================================================= */
+
+    .gap-opportunity {
+
+        position: absolute;
+
+        right: 0;
+
+        top: 20%;
+
+        transform: translateY(calc(-50% - 30px)) !important;
+
+        width: 48%;
+
+        text-align: center;
+
+        z-index: 3;
+
+    }
+
+    .gap-opportunity-label {
+        font-size: 100px;
+
+        letter-spacing: 5px;
+
+        color: #bda879;
+
+        margin-bottom: 14px;
+    }
+
+    .gap-opportunity-text {
+        font-family: Georgia, "Times New Roman", serif;
+
+        font-size: 22px;
+
+        color: #cbbd9e;
+    }
+
+    .gap-opportunity-line {
+        width: 1px;
+        height: 55px;
+
+        background: rgba(189, 168, 121, 0.55);
+
+        margin: 22px auto;
+    }
+
+    .gap-brand {
+        font-family: Georgia, "Times New Roman", serif;
+
+        font-size: clamp(42px, 4vw, 62px);
+
+        letter-spacing: 5px;
+
+        color: #cbbd9e;
+    }
+
+    .gap-brand-subtitle {
+        margin-top: 14px;
+
+        font-size: 9px;
+
+        letter-spacing: 5px;
+
+        color: #bda879;
+    }
+
+    .gap-elements {
+        margin-top: 42px;
+
+        font-size: 9px;
+
+        letter-spacing: 3px;
+
+        color: #706d65;
+
+        white-space: nowrap;
+    }
+
+
+    /* =========================================================
+    RESPONSIVE
+    ========================================================= */
+
+    @media (max-width: 1100px) {
+
+        .gap-inner {
+            grid-template-columns: 1fr;
+            gap: 60px;
+        }
+
+        .gap-header {
+            max-width: 700px;
+        }
+
+        .gap-visual {
+            min-height: 500px;
+        }
+    }
+
+
+    @media (max-width: 700px) {
+
+        .gap-title {
+            font-size: 52px;
+        }
+
+        .gap-visual {
+            min-height: 650px;
+        }
+
+        .gap-piece {
+            gap: 15px;
+        }
+
+        .gap-image {
+            width: 120px;
+            height: 120px;
+        }
+
+        .gap-connector {
+            left: 105px;
+        }
+
+        .gap-opportunity {
+            width: 50%;
+        }
+
+        .gap-brand {
+            font-size: 36px;
+            letter-spacing: 3px;
+        }
+
+        .gap-elements {
+            white-space: normal;
+            line-height: 1.8;
+        }
+    }
+
+
+    /* =========================================================
+    OPPORTUNITY
+    ========================================================= */
+
+    .gap-opportunity {
+        position: absolute;
+        right: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 270px;
+        padding-left: 35px;
+        border-left: 1px solid rgba(189,168,121,0.3);
+    }
+
+    .gap-opportunity-label {
+        font-size: 9px;
+        letter-spacing: 4px;
+        color: #706d65;
+        margin-bottom: 15px;
+    }
+
+    .gap-opportunity-text {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 50px;
+        line-height: 1.00;
+        color: #f4f0e8;
+    }
+
+    .gap-opportunity-line {
+        width: 45px;
+        height: 1px;
+        background: #bda879;
+        margin: 22px 0;
+    }
+
+    .gap-brand {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 40px;
+        letter-spacing: 5px;
+        margin-top: 20px;
+        color: #cbbd9e;
+    }
+
+    .gap-brand-subtitle {
+        margin-top: 7px;
+        font-size: 10px !important;
+        letter-spacing: 0px;
+        color: #706d65;
+        white-space: nowrap;
+    }
+
+    .gap-elements {
+        margin-top: 25px;
+        font-size: 8px;
+        line-height: 1.8;
+        letter-spacing: 2px;
+        color: #8f8b82;
+    }
+
+
+    /* =========================================================
+    RESPONSIVE
+    ========================================================= */
+
+    @media (max-width: 1100px) {
+
+        .gap-layout {
+            grid-template-columns: 1fr;
+            gap: 60px;
+        }
+
+        .gap-header {
+            max-width: 700px;
+        }
+
+        .gap-visual {
+            min-height: 500px;
+        }
+    }
+
+    @media (max-width: 700px) {
+
+        .gap-title {
+            font-size: 52px;
+        }
+
+        .gap-visual {
+            min-height: 650px;
+            transform: scale(0.85);
+            transform-origin: top left;
+        }
+    }
+
+
+
+    /* =========================================================
+    SPACE
+    ========================================================= */
+
+    .space-copy {
+        max-width: 520px;
+        font-size: 13px;
+        margin-top: 40px;
+    }
+
+    /* SPACE LAYOUT */
+    #space {
+        position: relative;
+        overflow: hidden;
+    }
+
+    #space .section-inner {
+        position: relative;
+        z-index: 2;
+        min-height: auto;
+    }
+
+    #space .section-subtitle {
+        max-width: 560px;
+    }
+
+    #space .layout-wrapper {
+        position: absolute;
+        top: -15px;
+        right: 0;
+        width: 42%;
+        margin: 0;
+        display: block;
+    }
+
+    #space .layout-image {
+        width: 100%;
+        max-width: 700px;
+        height: auto;
+        display: block;
+        margin: 0;
+        transform: none;
+
+        border: 1px solid rgba(189, 168, 121, 0.25);
+
+        box-shadow:
+            0 30px 80px rgba(0,0,0,0.35);
+    }
+
+
+    /* =========================================================
+    BUSINESS
+    ========================================================= */
+
+    /* =========================================
+    BUSINESS PAGE
+    ========================================= */
+
+    .business-page {
+        position: relative;
+        width: 100vw;
+        min-height: 100vh;
+        overflow: hidden;
+
+        padding: 135px 10% 70px;
+
+        background:
+            radial-gradient(
+                circle at 75% 35%,
+                rgba(120, 105, 70, 0.08),
+                transparent 38%
+            ),
+            linear-gradient(
+                120deg,
+                #10100f 0%,
+                #151513 50%,
+                #10100f 100%
+            );
+
+        color: #f1eee6;
+    }
+
+
+    /* =========================================
+    SECTION LABEL
+    ========================================= */
+
+    .business-label {
+        font-family: Arial, sans-serif;
+
+        font-size: 12px;
+        font-weight: 500;
+
+        letter-spacing: 5px;
+
+        color: #b9a46c;
+
+        margin-bottom: 28px;
+    }
+
+
+    /* =========================================
+    MAIN TITLE
+    ========================================= */
+
+    .business-title {
+        margin: 0;
+
+        max-width: 1100px;
+
+        font-family: Georgia, "Times New Roman", serif;
+
+        font-size: clamp(37px, 3vw, 57px);
+
+        font-weight: 400;
+
+        line-height: 0.98;
+
+        letter-spacing: -2px;
+
+        color: #f2efe8;
+    }
+
+
+    /* =========================================
+    SUBTITLE
+    ========================================= */
+
+    .business-subtitle {
+
+        margin: 25px 0 65px;
+
+        max-width: 1050px;
+
+        font-family: Georgia, "Times New Roman", serif;
+
+        font-size: clamp(15px, 1.3vw, 30px);
+
+        font-style: italic;
+
+        line-height: 1.25;
+
+        color: #c9bd9f;
+    }
+
+
+    /* =========================================
+    THREE CARDS
+    ========================================= */
+
+    .business-pillars {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+        width: 92%;
+        margin: 0 auto;
+    }
+
+
+    /* =========================================
+    CARD
+    ========================================= */
+
+    .business-card {
+
+        position: relative;
+
+        height: 300px;
+
+        overflow: hidden;
+
+        border-top: 1px solid
+            rgba(170, 148, 92, 0.55);
+
+        background: #181816;
+    }
+
+
+    /* IMAGE */
+
+    .business-card img {
+
+        position: absolute;
+
+        inset: 0;
+
+        width: 100%;
+        height: 100%;
+
+        object-fit: cover;
+
+        opacity: 1;
+
+        transition:
+            transform 0.5s ease,
+            opacity 0.5s ease;
+    }
+
+
+    /* DARK OVERLAY */
+
+    .business-card::after {
+
+        content: "";
+
+        position: absolute;
+
+        inset: 0;
+
+        background:
+            linear-gradient(
+                90deg,
+                rgba(15, 15, 14, 0.96) 0%,
+                rgba(15, 15, 14, 0.82) 45%,
+                rgba(15, 15, 14, 0.28) 100%
+            );
+
+        z-index: 1;
+    }
+
+
+    /* HOVER */
+
+    .business-card:hover img {
+
+        transform: scale(1.04);
+
+        opacity: 0.6;
+    }
+
+
+    /* =========================================
+    CARD NUMBER
+    ========================================= */
+
+    .card-number {
+
+        position: absolute;
+
+        top: 27px;
+        left: 30px;
+
+        z-index: 3;
+
+        font-family: Arial, sans-serif;
+
+        font-size: 11px;
+
+        letter-spacing: 3px;
+
+        color: #e1dac9;
+    }
+
+
+    /* =========================================
+    CARD ICON
+    ========================================= */
+
+    .card-icon {
+
+        position: absolute;
+
+        top: 55px;
+        left: 30px;
+
+        z-index: 3;
+
+        font-size: 32px;
+
+        color: #b9a46c;
+
+        font-family: Georgia, serif;
+    }
+
+
+    /* =========================================
+    CARD CONTENT
+    ========================================= */
+
+    .card-content {
+
+        position: absolute;
+
+        left: 30px;
+        bottom: 28px;
+        top: 140px;
+        width: 58%;
+        z-index: 3;
+    }
+
+
+    .card-content h2 {
+
+        margin: 0 0 12px;
+
+        font-family:
+            Georgia,
+            "Times New Roman",
+            serif;
+
+        font-size: 20px;
+
+        font-weight: 400;
+
+        letter-spacing: -0.5px;
+
+        color: #f1eee6;
+    }
+
+
+    .card-content span {
+
+        display: block;
+
+        margin-bottom: 15px;
+
+        font-family: Arial, sans-serif;
+
+        font-size: 10px;
+
+        font-weight: 500;
+
+        letter-spacing: 4px;
+
+        color: #b9a46c;
+    }
+
+
+    .card-content p {
+
+        margin: 0;
+
+        font-family: Arial, sans-serif;
+
+        font-size: 12px;
+
+        line-height: 1.65;
+
+        color: rgba(235, 232, 224, 0.72);
+    }
+
+
+    /* =========================================
+    GUEST JOURNEY
+    ========================================= */
+
+    .guest-journey {
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        gap: 60px;
+
+        width: 92%;
+
+        margin: 35px auto 0;
+
+        padding: 0;
+    }
+
+    .guest-journey div {
+
+        font-family: Arial, sans-serif;
+
+        font-size: 9px;
+
+        letter-spacing: 5px;
+
+        color: #b9a46c;
+
+        white-space: nowrap;
+    }
+
+
+    .guest-journey span {
+
+        font-size: 25px;
+
+        font-weight: 300;
+
+        color: #b9a46c;
+
+        opacity: 0.8;
+    }
+
+
+    /* =========================================
+    RESPONSIVE
+    ========================================= */
+
+    @media (max-width: 1000px) {
+
+        .business-page {
+
+            padding:
+                110px 6% 60px;
+        }
+
+        .business-pillars {
+
+            grid-template-columns:
+                1fr;
+        }
+
+        .business-card {
+
+            height: 300px;
+        }
+
+        .guest-journey {
+
+            gap: 15px;
+            overflow-x: auto;
+        }
+
+    }
+
+
+    @media (max-width: 600px) {
+
+        .business-title {
+
+            font-size: 48px;
+
+            letter-spacing: -1px;
+        }
+
+        .business-subtitle {
+
+            font-size: 21px;
+
+            margin-bottom: 40px;
+        }
+
+        .business-card {
+
+            height: 320px;
+        }
+
+        .card-content {
+
+            width: 75%;
+        }
+
+        .guest-journey {
+
+            display: none;
+        }
+
+    }
+
+    /* =========================================================
+    INVESTMENT
+    ========================================================= */
+
+    .investment-copy {
+        max-width: 850px;
+    }
+
+    .investment-copy p {
+        font-size: 17px;
+
+        line-height: 1.9;
+
+        color: #b7b3aa;
+
+        margin-bottom: 30px;
+    }
+
+    .investment-brand {
+        margin-top: 70px;
+
+        font-family: Georgia, "Times New Roman", serif;
+
+        font-size: 20px;
+
+        letter-spacing: 4px;
+
+        color: #cbbd9e;
+    }
+
+
+    /* =========================================================
+    FOOTER / PAGE NUMBER
+    ========================================================= */
+
+    .location {
+        position: absolute;
+
+        bottom: 40px;
+        left: 7vw;
+
+        z-index: 3;
+
+        font-size: 10px;
+
+        letter-spacing: 3px;
+
+        text-transform: uppercase;
+
+        color: #706d65;
+    }
+
+    .page {
+        position: absolute;
+
+        bottom: 40px;
+        right: 7vw;
+
+        font-size: 10px;
+
+        letter-spacing: 3px;
+
+        color: #706d65;
+    }
+
+
+    /* =========================================================
+    ANIMATION
+    ========================================================= */
+
+    .content,
+    .section-inner {
+        animation: reveal 1s ease forwards;
+    }
+
+    @keyframes reveal {
+
+        from {
+            opacity: 0;
+            transform: translateY(25px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+    }
+
+
+    /* =========================================================
+    MOBILE
+    ========================================================= */
+
+    @media (max-width: 900px) {
+
+        .top-nav {
+            padding: 20px 4vw;
+        }
+
+        .nav-links {
+            gap: 0;
+        }
+
+        .nav-links a {
+            padding: 10px 8px;
+            font-size: 8px;
+            letter-spacing: 1.5px;
+        }
+
+        .slide {
+            padding: 140px 7vw 90px;
+        }
+
+        .section-title {
+            font-size: clamp(55px, 10vw, 85px);
+        }
+
+        .gap-grid,
+        .business-grid {
+            grid-template-columns: 1fr;
+        }
+
+    }
+
+    @media (max-width: 600px) {
+
+        .nav-logo {
+            display: none;
+        }
+
+        .top-nav {
+            justify-content: flex-end;
+        }
+
+        .nav-links {
+            width: 100%;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            padding: 8px 6px;
+        }
+
+        .brand {
+            font-size: 65px;
+            letter-spacing: 7px;
+        }
+
+        .section-title {
+            font-size: 55px;
+        }
+
+    }
+    /* =========================================================
+    GAP — FINAL SIZE ADJUSTMENTS
+    ========================================================= */
+
+    .gap-image {
+        width: 150px !important;
+        height: 150px !important;
+        min-width: 150px !important;
+        min-height: 150px !important;
+        flex: 0 0 150px !important;
+    }
+
+    .gap-piece {
+        gap: 50px !important;
+    }
+
+    .gap-piece-copy {
+        width: 170px !important;
+        min-width: 170px !important;
+        transform: translateX(-20px);
+    }
+
+    .gap-piece-copy p {
+        font-size: 11px !important;
+        line-height: 1.55 !important;
+    }
+
+    
+
 /* =========================================================
-   GAP — FINAL SIZE ADJUSTMENTS
+   BEHIND HIDEAWAY — FINAL LAYOUT
 ========================================================= */
-
-.gap-image {
-    width: 150px !important;
-    height: 150px !important;
-    min-width: 150px !important;
-    min-height: 150px !important;
-    flex: 0 0 150px !important;
+ .behind-page {
+        position: relative;
+        width: 100vw;
+        min-height: 100vh;
+        overflow: hidden;
+        background:
+            radial-gradient(
+                circle at 72% 45%,
+                rgba(105, 92, 63, 0.07),
+                transparent 42%
+            ),
+            linear-gradient(
+                120deg,
+                #10100f 0%,
+                #151513 52%,
+                #10100f 100%
+            );
+        color: #f2efe8;
+    }
+ .behind-container {
+        width: 88%;
+        max-width: 1450px;
+        min-height: 100vh;
+        margin: 0 auto;
+        padding-top: 125px;
+        padding-bottom: 45px;
+        box-sizing: border-box;
+    }
+.behind-header{width:100%;margin-bottom:38px}
+ .behind-number {
+        margin-bottom: 24px;
+        font-family: Arial, sans-serif;
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 5px;
+        color: #b9a46c;
+        text-transform: uppercase;
+    }
+ .behind-title {
+        margin: 0;
+        max-width: 700px;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(40px, 3vw, 70px);
+        font-weight: 400;
+        line-height: 1;
+        letter-spacing: -2.5px;
+        color: #f2efe8;
+    }
+ .behind-subtitle {
+        margin-top: 25px;
+        max-width: 1050px;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(15px, 1vw, 25px);
+        font-style: italic;
+        line-height: 1.3;
+        color: #c9bd9f;
+    }
+.behind-intro {
+    max-width: 1050px;
+    margin-top: 22px;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    line-height: 1.5;
+    color: rgba(235, 232, 224, 0.78);
 }
 
-.gap-piece {
-    gap: 50px !important;
+ .people-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 28px;
+        width: 100%;
+    }
+ .person-card {
+        min-width: 0;
+    }
+ .person-photo {
+        position: relative;
+        width: 90%;
+        height: 230px;
+        overflow: hidden;
+        border: 1px solid rgba(185, 164, 108, 0.55);
+        background: linear-gradient(
+            145deg,
+            rgba(59, 56, 47, 0.9),
+            rgba(28, 27, 24, 0.95)
+        );
+    }
+ .person-photo::before {
+    content: "YOUR PHOTO";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: rgba(201, 189, 159, 0.55);
+    z-index: 0;
 }
 
-.gap-piece-copy {
-    width: 170px !important;
-    min-width: 170px !important;
+.person-card:nth-child(1) .person-photo::before,
+.person-card:nth-child(2) .person-photo::before {
+    display: none;
+}
+.person-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
-.gap-piece-copy p {
-    font-size: 11px !important;
-    line-height: 1.55 !important;
+/* 2nd person's photo */
+.person-card:nth-child(2) .person-photo img {
+    object-position: center 0%;
+}
+ .person-photo img[src=""] {
+        display: none;
+    }
+ .person-card:hover .person-photo img {
+        transform: scale(1.03);
+    }
+.person-link {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-top: 25px;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
 }
 
+.person-name {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: 4px;
+    color: #f2efe8;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: color 0.3s ease;
+}
+
+.person-arrow {
+    font-family: Arial, sans-serif;
+    font-size: 7px;
+    color: #b9a46c;
+    white-space: nowrap;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.person-link:hover .person-name {
+    color: #c9bd9f;
+}
+
+.person-link:hover .person-arrow {
+    transform: translateX(3px);
+    opacity: 0.7;
+}
+.person-role {
+    margin-top: 12px;
+    margin-bottom: 18px;
+
+    font-family: Arial, sans-serif;
+    font-size: 9px;
+    font-weight: 500;
+    line-height: 1.6;
+    letter-spacing: 3px;
+    color: #b9a46c;
+    text-transform: uppercase;
+}
+ .person-card p {
+        margin: 0;
+        max-width: 280px;
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 1.55;
+        color: rgba(235, 232, 224, 0.68);
+    }
+.behind-footer {
+    margin-top: 28px;
+}
+
+.behind-footer-line {
+    display: none;
+}
+
+.behind-footer-name {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 4px;
+    color: #c9bd9f;
+}
+
+.behind-footer-location {
+    margin-top: 5px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #c9bd9f;
+}
+
+@media (max-width: 1100px) {
+
+    .behind-container {
+        width: 90%;
+        padding-top: 115px;
+    }
+
+    .people-grid {
+        gap: 18px;
+    }
+
+    .person-photo {
+        height: 220px;
+    }
+}
+
+@media (max-width: 800px) {
+
+    .behind-container {
+        padding-top: 110px;
+    }
+
+    .behind-title {
+        font-size: 48px;
+    }
+
+    .people-grid {
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 35px;
+    }
+}
+
+@media (max-width: 520px) {
+
+    .behind-container {
+        width: 86%;
+        padding-top: 100px;
+    }
+
+    .behind-title {
+        font-size: 42px;
+    }
+
+    .behind-subtitle {
+        font-size: 19px;
+    }
+
+    .people-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .person-photo {
+        height: 330px;
+    }
+}
 </style>
-</head>
+    </head>
 
 
-<body>
+    <body>
 
 
-<!-- =====================================================
-     NAVIGATION
-===================================================== -->
+    <!-- =====================================================
+        NAVIGATION
+    ===================================================== -->
 
-<nav class="top-nav">
+    <nav class="top-nav">
 
-    <a href="#brand" class="nav-logo">
-    <img src="images/logo.png" alt="Hideaway H Logo">
-    </a>
-
-    <div class="nav-links">
-
-        <a href="#brand" class="active">
-            BRAND
+        <a href="#brand" class="nav-logo">
+        <img src="images/logo.png" alt="Hideaway H Logo">
         </a>
 
-        <a href="#opportunity">
-            OPPORTUNITY
-        </a>
+        <div class="nav-links">
 
-        <a href="#gap">
-            THE GAP
-        </a>
+            <a href="#brand" class="active">
+                BRAND
+            </a>
 
-        <a href="#space">
-            THE SPACE
-        </a>
+            <a href="#opportunity">
+                OPPORTUNITY
+            </a>
 
-        <a href="#business">
-            BUSINESS
-        </a>
+            <a href="#gap">
+                THE GAP
+            </a>
+
+            <a href="#space">
+                THE SPACE
+            </a>
+
+            <a href="#business">
+                BUSINESS
+            </a>
 
         <a href="#investment">
-            INVESTMENT
-        </a>
+        BEHIND HIDEAWAY
+    </a>
 
-    </div>
-
-</nav>
-
-
-
-<!-- =====================================================
-     01 BRAND
-===================================================== -->
-
-<main>
-
-<section id="brand" class="slide brand-page">
-
-    <div class="texture"></div>
-
-    <div class="circle"></div>
-
-    <section class="content">
-
-        <div class="eyebrow">
-            Restaurant · Bar
         </div>
 
-        <h1 class="brand">
-            HIDEAWAY
-        </h1>
+    </nav>
 
-        <div class="tagline">
-            A place worth finding.
+
+
+    <!-- =====================================================
+        01 BRAND
+    ===================================================== -->
+
+    <main>
+
+    <section id="brand" class="slide brand-page">
+
+        <div class="texture"></div>
+
+        <div class="circle"></div>
+
+        <section class="content">
+
+            <div class="eyebrow">
+                Restaurant · Bar
+            </div>
+
+            <h1 class="brand">
+                HIDEAWAY
+            </h1>
+
+            <div class="tagline">
+                A place worth finding.
+            </div>
+
+            <div class="divider"></div>
+
+            <p class="story">
+
+                In the heart of San Juan, Siquijor, Hideaway was created
+                to bring something new to the island — an enclosed,
+                elevated restaurant and bar that feels luxurious without
+                feeling out of reach.
+
+                <br><br>
+
+                A place where food, cocktails, design, and atmosphere
+                come together — giving locals and travelers a reason
+                to stay a little longer.
+
+            </p>
+
+        </section>
+
+        <div class="location">
+            San Juan · Siquijor
         </div>
 
-        <div class="divider"></div>
-
-        <p class="story">
-
-            In the heart of San Juan, Siquijor, Hideaway was created
-            to bring something new to the island — an enclosed,
-            elevated restaurant and bar that feels luxurious without
-            feeling out of reach.
-
-            <br><br>
-
-            A place where food, cocktails, design, and atmosphere
-            come together — giving locals and travelers a reason
-            to stay a little longer.
-
-        </p>
+        <div class="page">
+            01 / 06
+        </div>
 
     </section>
 
-    <div class="location">
-        San Juan · Siquijor
-    </div>
-
-    <div class="page">
-        01 / 06
-    </div>
-
-</section>
 
 
-
-<!-- =====================================================
-     02 OPPORTUNITY
-===================================================== -->
-
-
- <!-- =====================================================
-     02 OPPORTUNITY
-===================================================== -->
-
-<section id="opportunity" class="slide opportunity-page">
-
-    <div class="texture"></div>
-    <div class="circle"></div>
-
-    <div class="section-inner">
-
-        <div class="opportunity-layout">
-
-            <!-- ================= LEFT ================= -->
-
-            <div class="opportunity-left">
-
-                <div class="section-number">
-                    02 — THE OPPORTUNITY
-                </div>
-
-                <h2 class="opportunity-title">
-                    A market<br>
-                    moving fast.
-                </h2>
-
-                <p class="opportunity-intro">
-                    Siquijor has moved beyond its pre-pandemic tourism peak.
-                    In 2025, the island recorded
-                    <strong>273,000 staying tourists</strong> —
-                    visitors who spent at least one night on the island.
-                    <br><br>
-                    That is <strong>62% above 2019</strong>, showing continued
-                    demand for hospitality, dining, and nightlife.
-                </p>
+    <!-- =====================================================
+        02 OPPORTUNITY
+    ===================================================== -->
 
 
-                <!-- ================= TOURISM GROWTH ================= -->
+    <section id="opportunity" class="slide opportunity-page">
 
-                <div class="opportunity-growth">
+        <div class="texture"></div>
+        <div class="circle"></div>
 
-                    <div class="growth-heading">
-                        <span>Staying tourists</span>
-                        <span>2019 — 2025</span>
+        <div class="section-inner">
+
+            <div class="opportunity-layout">
+
+                <!-- ================= LEFT ================= -->
+
+                <div class="opportunity-left">
+
+                    <div class="section-number">
+                        02 — THE OPPORTUNITY
                     </div>
 
-                    <div class="growth-chart">
+                    <h2 class="opportunity-title">
+                        A market<br>
+                        moving fast.
+                    </h2>
 
-                        <!-- 2019 -->
+                    <p class="opportunity-intro">
+                        Siquijor has moved beyond its pre-pandemic tourism peak.
+                        In 2025, the island recorded
+                        <strong>273,000 staying tourists</strong> —
+                        visitors who spent at least one night on the island.
+                        <br><br>
+                        That is <strong>62% above 2019</strong>, showing continued
+                        demand for hospitality, dining, and nightlife.
+                    </p>
 
-                        <div class="growth-year">
 
-                            <div class="growth-bar-wrap">
-                                <div
-                                    class="growth-bar"
-                                    style="height: 62%;">
+                    <!-- ================= TOURISM GROWTH ================= -->
+
+                    <div class="opportunity-growth">
+
+                        <div class="growth-heading">
+                            <span>Staying tourists</span>
+                            <span>2019 — 2025</span>
+                        </div>
+
+                        <div class="growth-chart">
+
+                            <!-- 2019 -->
+
+                            <div class="growth-year">
+
+                                <div class="growth-bar-wrap">
+                                    <div
+                                        class="growth-bar"
+                                        style="height: 62%;">
+                                    </div>
                                 </div>
+
+                                <div class="growth-value">
+                                    168K
+                                </div>
+
+                                <div class="growth-label">
+                                    2019
+                                </div>
+
                             </div>
 
-                            <div class="growth-value">
-                                168K
+
+                            <!-- 2020 -->
+
+                            <div class="growth-year">
+
+                                <div class="growth-bar-wrap">
+                                    <div
+                                        class="growth-bar"
+                                        style="height: 14%;">
+                                    </div>
+                                </div>
+
+                                <div class="growth-value">
+                                    38K
+                                </div>
+
+                                <div class="growth-label">
+                                    2020
+                                </div>
+
                             </div>
 
-                            <div class="growth-label">
-                                2019
+
+                            <!-- 2021 -->
+
+                            <div class="growth-year">
+
+                                <div class="growth-bar-wrap">
+                                    <div
+                                        class="growth-bar"
+                                        style="height: 9%;">
+                                    </div>
+                                </div>
+
+                                <div class="growth-value">
+                                    24K
+                                </div>
+
+                                <div class="growth-label">
+                                    2021
+                                </div>
+
+                            </div>
+
+
+                            <!-- 2022 -->
+
+                            <div class="growth-year">
+
+                                <div class="growth-bar-wrap">
+                                    <div
+                                        class="growth-bar"
+                                        style="height: 36%;">
+                                    </div>
+                                </div>
+
+                                <div class="growth-value">
+                                    99K
+                                </div>
+
+                                <div class="growth-label">
+                                    2022
+                                </div>
+
+                            </div>
+
+
+                            <!-- 2023 -->
+
+                            <div class="growth-year">
+
+                                <div class="growth-bar-wrap">
+                                    <div
+                                        class="growth-bar"
+                                        style="height: 62%;">
+                                    </div>
+                                </div>
+
+                                <div class="growth-value">
+                                    169K
+                                </div>
+
+                                <div class="growth-label">
+                                    2023
+                                </div>
+
+                            </div>
+
+
+                            <!-- 2024 -->
+
+                            <div class="growth-year">
+
+                                <div class="growth-bar-wrap">
+                                    <div
+                                        class="growth-bar"
+                                        style="height: 88%;">
+                                    </div>
+                                </div>
+
+                                <div class="growth-value">
+                                    242K
+                                </div>
+
+                                <div class="growth-label">
+                                    2024
+                                </div>
+
+                            </div>
+
+
+                            <!-- 2025 -->
+
+                            <div class="growth-year">
+
+                                <div class="growth-bar-wrap">
+                                    <div
+                                        class="growth-bar current"
+                                        style="height: 100%;">
+                                    </div>
+                                </div>
+
+                                <div class="growth-value">
+                                    273K
+                                </div>
+
+                                <div class="growth-label">
+                                    2025
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= RIGHT ================= -->
+
+                <div class="opportunity-right">
+
+                    <div class="opportunity-stats">
+
+
+                        <!-- MAIN STAT -->
+
+                        <div class="opportunity-stat large">
+
+                            <div class="opportunity-stat-value">
+                                +62%
+                            </div>
+
+                            <div class="opportunity-stat-label">
+                                Tourism growth
+                            </div>
+
+                            <div class="opportunity-stat-detail">
+                                Increase in staying tourists
+                                from 2019 to 2025.
                             </div>
 
                         </div>
 
 
-                        <!-- 2020 -->
+                        <!-- 2025 VISITORS -->
 
-                        <div class="growth-year">
+                        <div class="opportunity-stat">
 
-                            <div class="growth-bar-wrap">
-                                <div
-                                    class="growth-bar"
-                                    style="height: 14%;">
-                                </div>
-                            </div>
-
-                            <div class="growth-value">
-                                38K
-                            </div>
-
-                            <div class="growth-label">
-                                2020
-                            </div>
-
-                        </div>
-
-
-                        <!-- 2021 -->
-
-                        <div class="growth-year">
-
-                            <div class="growth-bar-wrap">
-                                <div
-                                    class="growth-bar"
-                                    style="height: 9%;">
-                                </div>
-                            </div>
-
-                            <div class="growth-value">
-                                24K
-                            </div>
-
-                            <div class="growth-label">
-                                2021
-                            </div>
-
-                        </div>
-
-
-                        <!-- 2022 -->
-
-                        <div class="growth-year">
-
-                            <div class="growth-bar-wrap">
-                                <div
-                                    class="growth-bar"
-                                    style="height: 36%;">
-                                </div>
-                            </div>
-
-                            <div class="growth-value">
-                                99K
-                            </div>
-
-                            <div class="growth-label">
-                                2022
-                            </div>
-
-                        </div>
-
-
-                        <!-- 2023 -->
-
-                        <div class="growth-year">
-
-                            <div class="growth-bar-wrap">
-                                <div
-                                    class="growth-bar"
-                                    style="height: 62%;">
-                                </div>
-                            </div>
-
-                            <div class="growth-value">
-                                169K
-                            </div>
-
-                            <div class="growth-label">
-                                2023
-                            </div>
-
-                        </div>
-
-
-                        <!-- 2024 -->
-
-                        <div class="growth-year">
-
-                            <div class="growth-bar-wrap">
-                                <div
-                                    class="growth-bar"
-                                    style="height: 88%;">
-                                </div>
-                            </div>
-
-                            <div class="growth-value">
-                                242K
-                            </div>
-
-                            <div class="growth-label">
-                                2024
-                            </div>
-
-                        </div>
-
-
-                        <!-- 2025 -->
-
-                        <div class="growth-year">
-
-                            <div class="growth-bar-wrap">
-                                <div
-                                    class="growth-bar current"
-                                    style="height: 100%;">
-                                </div>
-                            </div>
-
-                            <div class="growth-value">
+                            <div class="opportunity-stat-value">
                                 273K
                             </div>
 
-                            <div class="growth-label">
-                                2025
+                            <div class="opportunity-stat-label">
+                                2025 visitors
+                            </div>
+
+                            <div class="opportunity-stat-detail">
+                                Staying tourists recorded
+                                in 2025.
+                            </div>
+
+                        </div>
+
+
+                        <!-- YEAR ON YEAR -->
+
+                        <div class="opportunity-stat">
+
+                            <div class="opportunity-stat-value">
+                                +13%
+                            </div>
+
+                            <div class="opportunity-stat-label">
+                                Year-on-year
+                            </div>
+
+                            <div class="opportunity-stat-detail">
+                                Growth from 241,529 visitors
+                                in 2024.
+                            </div>
+
+                        </div>
+
+
+                        <!-- GDP -->
+
+                        <div class="opportunity-stat">
+
+                            <div class="opportunity-stat-value">
+                                ₱13.78B
+                            </div>
+
+                            <div class="opportunity-stat-label">
+                                2024 GDP
+                            </div>
+
+                            <div class="opportunity-stat-detail">
+                                Provincial economy, up from
+                                ₱12.77B in 2023.
+                            </div>
+
+                        </div>
+
+
+                        <!-- ECONOMIC GROWTH -->
+
+                        <div class="opportunity-stat">
+
+                            <div class="opportunity-stat-value">
+                                +7.9%
+                            </div>
+
+                            <div class="opportunity-stat-label">
+                                Economic growth
+                            </div>
+
+                            <div class="opportunity-stat-detail">
+                                Siquijor's GDP growth
+                                in 2024.
                             </div>
 
                         </div>
 
                     </div>
 
-                </div>
 
-            </div>
+                    <!-- ================= RECOGNITION ================= -->
 
+                    <div class="opportunity-recognition">
 
-            <!-- ================= RIGHT ================= -->
-
-            <div class="opportunity-right">
-
-                <div class="opportunity-stats">
-
-
-                    <!-- MAIN STAT -->
-
-                    <div class="opportunity-stat large">
-
-                        <div class="opportunity-stat-value">
-                            +62%
+                        <div class="recognition-label">
+                            International recognition
                         </div>
 
-                        <div class="opportunity-stat-label">
-                            Tourism growth
+                        <div class="recognition-title">
+                            Fastest-growing destination for
+                            international travelers in the Philippines.
                         </div>
 
-                        <div class="opportunity-stat-detail">
-                            Increase in staying tourists
-                            from 2019 to 2025.
+                        <div class="recognition-source">
+            <a 
+    href="https://www.agoda.com/press/siquijor-island-is-the-philippines-top-emerging-destination-agoda/"
+    target="_blank"
+    rel="noopener noreferrer"
+    style="color:#BDA879; text-decoration:none;"
+    >
+    Agoda · New Horizons 2025&nbsp; ↗
+    </a>
+    </a>
                         </div>
 
-                    </div>
-
-
-                    <!-- 2025 VISITORS -->
-
-                    <div class="opportunity-stat">
-
-                        <div class="opportunity-stat-value">
-                            273K
-                        </div>
-
-                        <div class="opportunity-stat-label">
-                            2025 visitors
-                        </div>
-
-                        <div class="opportunity-stat-detail">
-                            Staying tourists recorded
-                            in 2025.
-                        </div>
-
-                    </div>
-
-
-                    <!-- YEAR ON YEAR -->
-
-                    <div class="opportunity-stat">
-
-                        <div class="opportunity-stat-value">
-                            +13%
-                        </div>
-
-                        <div class="opportunity-stat-label">
-                            Year-on-year
-                        </div>
-
-                        <div class="opportunity-stat-detail">
-                            Growth from 241,529 visitors
-                            in 2024.
-                        </div>
-
-                    </div>
-
-
-                    <!-- GDP -->
-
-                    <div class="opportunity-stat">
-
-                        <div class="opportunity-stat-value">
-                            ₱13.78B
-                        </div>
-
-                        <div class="opportunity-stat-label">
-                            2024 GDP
-                        </div>
-
-                        <div class="opportunity-stat-detail">
-                            Provincial economy, up from
-                            ₱12.77B in 2023.
-                        </div>
-
-                    </div>
-
-
-                    <!-- ECONOMIC GROWTH -->
-
-                    <div class="opportunity-stat">
-
-                        <div class="opportunity-stat-value">
-                            +7.9%
-                        </div>
-
-                        <div class="opportunity-stat-label">
-                            Economic growth
-                        </div>
-
-                        <div class="opportunity-stat-detail">
-                            Siquijor's GDP growth
-                            in 2024.
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- ================= RECOGNITION ================= -->
-
-                <div class="opportunity-recognition">
-
-                    <div class="recognition-label">
-                        International recognition
-                    </div>
-
-                    <div class="recognition-title">
-                        Fastest-growing destination for
-                        international travelers in the Philippines.
-                    </div>
-
-                    <div class="recognition-source">
-        <a 
-  href="https://www.agoda.com/press/siquijor-island-is-the-philippines-top-emerging-destination-agoda/"
-  target="_blank"
-  rel="noopener noreferrer"
-  style="color:#BDA879; text-decoration:none;"
->
-  Agoda · New Horizons 2025&nbsp; ↗
-</a>
-</a>
                     </div>
 
                 </div>
@@ -2180,459 +2816,586 @@ flex: 0 0 150px;
 
         </div>
 
-    </div>
 
+        <!-- ================= FOOTER ================= -->
 
-    <!-- ================= FOOTER ================= -->
-
-    <div class="location">
-        San Juan · Siquijor
-    </div>
-
-    <div class="page">
-        02 / 06
-    </div>
-
-</section>
-
-<!-- =====================================================
-     03 THE GAP
-===================================================== -->
-
-<section id="gap" class="slide gap-page">
-
-    <div class="texture"></div>
-
-    <div class="gap-inner">
-
-        <!-- LEFT STATEMENT -->
-        <div class="gap-header">
-
-            <div class="section-number">
-                03 — THE GAP
-            </div>
-
-            <h2 class="gap-title">
-                The pieces<br>
-                already exist.
-                <em>The experience<br>
-                doesn't.</em>
-            </h2>
-
-            <div class="gap-line"></div>
-
-            <p class="gap-intro">
-                Siquijor already has restaurants, bars, beach venues,
-                and places to gather. What remains limited is a destination
-                that brings elevated dining, cocktails, music, design,
-                and atmosphere together under one roof.
-            </p>
-
+        <div class="location">
+            San Juan · Siquijor
         </div>
 
+        <div class="page">
+            02 / 06
+        </div>
 
-        <!-- RIGHT VISUAL -->
-        <div class="gap-visual">
+    </section>
+
+    <!-- =====================================================
+        03 THE GAP
+    ===================================================== -->
+
+    <section id="gap" class="slide gap-page">
+
+        <div class="texture"></div>
+
+        <div class="gap-inner">
+
+            <!-- LEFT STATEMENT -->
+            <div class="gap-header">
+
+                <div class="section-number">
+                    03 — THE GAP
+                </div>
+
+                <h2 class="gap-title">
+                    The pieces<br>
+                    already exist.
+                    <em>The experience<br>
+                    doesn't.</em>
+                </h2>
+
+                <div class="gap-line"></div>
+
+                <p class="gap-intro">
+                    Siquijor already has restaurants, bars, beach venues,
+                    and places to gather. What remains limited is a destination
+                    that brings elevated dining, cocktails, music, design,
+                    and atmosphere together under one roof.
+                </p>
+
+            </div>
+
+
+            <!-- RIGHT VISUAL -->
+            <div class="gap-visual">
 
 
             <!-- FOOD -->
-            <div class="gap-piece gap-food">
+    <div class="gap-piece gap-food">
 
-                <div class="gap-image"></div>
+        <div class="gap-image">
+            <img src="images/food.png" alt="Siquijor food">
+        </div>
 
-                <div class="gap-piece-copy">
-                    <div class="gap-piece-title">
-                        FOOD
+        <div class="gap-piece-copy">
+            <div class="gap-piece-title">
+                FOOD
+            </div>
+
+                        <p>
+                            Great restaurants<br>
+                            and local flavors<br>
+                            already exist.
+                        </p>
                     </div>
 
-                    <p>
-                        Great restaurants<br>
-                        and local flavors<br>
-                        already exist.
-                    </p>
+                </div>
+
+
+                <!-- NIGHTLIFE -->
+                <div class="gap-piece gap-nightlife">
+                    <div class="gap-image">
+        <img src="images/nightlife.png" alt="Siquijor nightlife">
+    </div>
+
+                    <div class="gap-piece-copy">
+                        <div class="gap-piece-title">
+                            NIGHTLIFE
+                        </div>
+
+                        <p>
+                            Vibrant bars and<br>
+                            beach venues<br>
+                            attract crowds.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- DESIGN -->
+                <div class="gap-piece gap-design">
+
+                    <div class="gap-image">
+        <img src="images/design.png" alt="Siquijor design">
+    </div>
+
+                    <div class="gap-piece-copy">
+                        <div class="gap-piece-title">
+                            DESIGN
+                        </div>
+
+                        <p>
+                            Beautiful spaces<br>
+                            and stunning settings<br>
+                            are already here.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- CURVED CONNECTOR -->
+                <div class="gap-connector">
+
+                    <svg
+                        viewBox="0 0 360 500"
+                        preserveAspectRatio="none"
+                        aria-hidden="true"
+                    >
+
+                        <!-- TOP CURVE -->
+                        <path
+                            d="
+                            M 0 55
+                            C 80 55, 105 90, 105 145
+                            L 105 185
+                            C 105 220, 125 240, 170 250
+                            "
+                        />
+
+                        <!-- MIDDLE CONNECTION -->
+                        <path
+                            d="
+                            M 0 250
+                            L 170 250
+                            "
+                        />
+
+                        <!-- BOTTOM CURVE -->
+                        <path
+                            d="
+                            M 0 445
+                            C 80 445, 105 410, 105 355
+                            L 105 315
+                            C 105 280, 125 260, 170 250
+                            "
+                        />
+
+                        <!-- POINT -->
+                        <circle
+                            cx="170"
+                            cy="250"
+                            r="3.5"
+                        />
+
+                    </svg>
+
+                </div>
+
+
+                <!-- OPPORTUNITY -->
+                <div class="gap-opportunity">
+
+                    <div class="gap-opportunity-label">
+                        THE OPPORTUNITY
+                    </div>
+
+                    <div class="gap-opportunity-text">
+                        To bring them together.
+                    </div>
+
+                    <div class="gap-brand">
+                        HIDEAWAY
+                    </div>
+
+                    <div class="gap-brand-subtitle">
+                        ONE DESTINATION · COMPLETE EXPERIENCE
+                    </div>
+
+                    <div class="gap-elements">
+                        FOOD · COCKTAILS · MUSIC · ATMOSPHERE
+                    </div>
+
                 </div>
 
             </div>
 
+        </div>
 
-            <!-- NIGHTLIFE -->
-            <div class="gap-piece gap-nightlife">
 
-                <div class="gap-image"></div>
+        <div class="location">
+            San Juan · Siquijor
+        </div>
 
-                <div class="gap-piece-copy">
-                    <div class="gap-piece-title">
-                        NIGHTLIFE
-                    </div>
+        <div class="page">
+            03 / 06
+        </div>
 
-                    <p>
-                        Vibrant bars and<br>
-                        beach venues<br>
-                        attract crowds.
-                    </p>
-                </div>
+    </section>
+
+    <!-- =====================================================
+        04 THE SPACE
+    ===================================================== -->
+
+    <section id="space" class="slide">
+
+        <div class="texture"></div>
+
+        <div class="circle"></div>
+
+        <div class="section-inner">
+
+            <div class="section-number">
+                04 — THE SPACE
+            </div>
+
+            <h2 class="section-title">
+                Designed<br>
+                with purpose.
+            </h2>
+
+            <div class="section-subtitle">
+                A compact footprint designed to maximize dining, bar and entertainment.
+            </div>
+
+            <div class="space-copy section-text">
+
+                <p>
+    Designed to offer something different in an island setting — a space where elevated design, dining, atmosphere, and energy come together. We wanted Hideaway to feel unexpected, creating a fresh experience that gives both locals and travelers a new reason to enjoy Siquijor.
+    </p>
 
             </div>
 
 
-            <!-- DESIGN -->
-            <div class="gap-piece gap-design">
+            <div class="layout-wrapper">
 
-                <div class="gap-image"></div>
-
-                <div class="gap-piece-copy">
-                    <div class="gap-piece-title">
-                        DESIGN
-                    </div>
-
-                    <p>
-                        Beautiful spaces<br>
-                        and stunning settings<br>
-                        are already here.
-                    </p>
-                </div>
-
-            </div>
-
-
-            <!-- CURVED CONNECTOR -->
-            <div class="gap-connector">
-
-                <svg
-                    viewBox="0 0 360 500"
-                    preserveAspectRatio="none"
-                    aria-hidden="true"
+                <img
+                    src="images/moodboard.png"
+                    alt="Hideaway Restaurant and Bar mood board"
+                    class="layout-image"
                 >
 
-                    <!-- TOP CURVE -->
-                    <path
-                        d="
-                        M 0 55
-                        C 80 55, 105 90, 105 145
-                        L 105 185
-                        C 105 220, 125 240, 170 250
-                        "
-                    />
-
-                    <!-- MIDDLE CONNECTION -->
-                    <path
-                        d="
-                        M 0 250
-                        L 170 250
-                        "
-                    />
-
-                    <!-- BOTTOM CURVE -->
-                    <path
-                        d="
-                        M 0 445
-                        C 80 445, 105 410, 105 355
-                        L 105 315
-                        C 105 280, 125 260, 170 250
-                        "
-                    />
-
-                    <!-- POINT -->
-                    <circle
-                        cx="170"
-                        cy="250"
-                        r="3.5"
-                    />
-
-                </svg>
-
-            </div>
-
-
-            <!-- OPPORTUNITY -->
-            <div class="gap-opportunity">
-
-                <div class="gap-opportunity-label">
-                    THE OPPORTUNITY
-                </div>
-
-                <div class="gap-opportunity-text">
-                    To bring them together.
-                </div>
-
-                <div class="gap-brand">
-                    HIDEAWAY
-                </div>
-
-                <div class="gap-brand-subtitle">
-                    ONE DESTINATION · COMPLETE EXPERIENCE
-                </div>
-
-                <div class="gap-elements">
-                    FOOD · COCKTAILS · MUSIC · DESIGN · ATMOSPHERE
-                </div>
-
             </div>
 
         </div>
 
-    </div>
-
-
-    <div class="location">
-        San Juan · Siquijor
-    </div>
-
-    <div class="page">
-        03 / 06
-    </div>
-
-</section>
-
-<!-- =====================================================
-     04 THE SPACE
-===================================================== -->
-
-<section id="space" class="slide">
-
-    <div class="texture"></div>
-
-    <div class="circle"></div>
-
-    <div class="section-inner">
-
-        <div class="section-number">
-            04 — THE SPACE
+        <div class="location">
+            San Juan · Siquijor
         </div>
 
-        <h2 class="section-title">
-            Designed<br>
-            with purpose.
-        </h2>
-
-        <div class="section-subtitle">
-            A compact footprint designed to maximize dining, bar and entertainment.
+        <div class="page">
+            04 / 06
         </div>
 
-        <div class="space-copy section-text">
-
-            <p>
-                The layout is designed around the actual flow of the
-                restaurant — placing the bar and DJ area along the
-                left side, maximizing the dining area, and positioning
-                the open kitchen toward the right.
-            </p>
-
-        </div>
-
-
-        <div class="layout-wrapper">
-
-            <img
-                src="images/hideaway-layout.png"
-                alt="Hideaway Restaurant and Bar floor plan"
-                class="layout-image"
-            >
-
-        </div>
-
-    </div>
-
-    <div class="location">
-        San Juan · Siquijor
-    </div>
-
-    <div class="page">
-        04 / 06
-    </div>
-
-</section>
+    </section>
 
 
 
-<!-- =====================================================
-     05 BUSINESS
-===================================================== -->
+    <!-- =====================================================
+        05 BUSINESS
+    ===================================================== -->
+    <section class="slide business-page">
 
-<section id="business" class="slide">
-
-    <div class="texture"></div>
-
-    <div class="circle"></div>
-
-    <div class="section-inner">
-
-        <div class="section-number">
+        <!-- TOP LABEL -->
+        <div class="business-label">
             05 — THE BUSINESS
         </div>
 
-        <h2 class="section-title">
-            Built for<br>
-            repeat business.
-        </h2>
+        <!-- MAIN HEADING -->
+        <h1 class="business-title">
+            More than one reason to spend.
+        </h1>
 
-        <div class="section-subtitle">
-            More than a restaurant — a destination people return to.
-        </div>
+        <p class="business-subtitle">
+            A single destination designed to generate revenue
+            across the entire guest journey.
+        </p>
 
+        <!-- THREE BUSINESS PILLARS -->
+        <div class="business-pillars">
 
-        <div class="business-grid">
-
+            <!-- FOOD -->
             <div class="business-card">
 
-                <h3>
-                    Restaurant
-                </h3>
 
-                <p>
-                    Elevated food designed for both travelers
-                    and the local market.
-                </p>
+
+                <div class="card-content">
+                    <h2>FOOD</h2>
+                    <span>THE FOUNDATION</span>
+
+                    <p>
+                        Elevated food built for both visitors and
+                        the local market, creating a strong core
+                        revenue stream across lunch and dinner.
+                    </p>
+                </div>
+
+                <img
+                    src="images/businessfood.png"
+                    alt="Food"
+                >
 
             </div>
 
 
+            <!-- DRINKS -->
             <div class="business-card">
 
-                <h3>
-                    Bar
-                </h3>
 
-                <p>
-                    Cocktails and drinks create an additional
-                    revenue stream throughout the evening.
-                </p>
+                <div class="card-content">
+                    <h2>DRINKS</h2>
+                    <span>THE MARGIN DRIVER</span>
+
+                    <p>
+                        Cocktails, wine, beer and premium drinks
+                        extend the guest journey and increase
+                        average spend per table.
+                    </p>
+                </div>
+
+                <img
+                    src="images/businessdrinks.png"
+                    alt="Cocktails"
+                >
 
             </div>
 
 
+            <!-- EXPERIENCE -->
             <div class="business-card">
 
-                <h3>
-                    Music
-                </h3>
 
-                <p>
-                    DJ-led evenings create an experience
-                    that encourages guests to stay longer.
-                </p>
+                <div class="card-content">
+                    <h2>EXPERIENCE</h2>
+                    <span>THE REASON TO STAY</span>
+
+                    <p>
+                        Music, atmosphere and programming turn a
+                        meal into an evening — increasing dwell time,
+                        repeat visits and destination appeal.
+                    </p>
+                </div>
+
+                <img
+                    src="images/businessdj.png"
+                    alt="Music and experience"
+                >
 
             </div>
 
         </div>
 
-    </div>
 
-    <div class="location">
-        San Juan · Siquijor
-    </div>
+        <!-- GUEST JOURNEY -->
+        <div class="guest-journey">
 
-    <div class="page">
-        05 / 06
-    </div>
+            <div>LUNCH</div>
 
-</section>
+            <span>→</span>
 
+            <div>DINNER</div>
 
+            <span>→</span>
 
-<!-- =====================================================
-     06 INVESTMENT
-===================================================== -->
+            <div>COCKTAILS</div>
 
-<section id="investment" class="slide">
+            <span>→</span>
 
-    <div class="texture"></div>
+            <div>MUSIC</div>
 
-    <div class="circle"></div>
+            <span>→</span>
 
-    <div class="section-inner">
-
-        <div class="section-number">
-            06 — INVESTMENT
-        </div>
-
-        <h2 class="section-title">
-            The opportunity<br>
-            ahead.
-        </h2>
-
-        <div class="section-subtitle">
-            A differentiated hospitality concept in one of Siquijor's strongest locations.
-        </div>
-
-
-        <div class="investment-copy">
-
-            <p>
-                Hideaway is positioned to become a recognizable
-                dining and nightlife destination in San Juan.
-            </p>
-
-            <p>
-                The next stage is bringing together the right
-                investment, operational structure and team to
-                turn the concept into a long-term hospitality brand.
-            </p>
+            <div>REPEAT VISIT</div>
 
         </div>
 
+    </section>
 
-        <div class="investment-brand">
-            HIDEAWAY
-            <br>
-            <span style="font-size:11px; letter-spacing:3px;">
-                Restaurant · Bar · San Juan, Siquijor
-            </span>
+
+    <!-- ================= BEHIND HIDEAWAY ================= -->
+
+    <section class="slide behind-page" id="investment">
+
+        <div class="behind-container">
+
+            <div class="behind-header">
+
+                <div class="behind-number">
+                    06 — BEHIND HIDEAWAY
+                </div>
+
+                <h2 class="behind-title">
+                    The people<br>
+                    behind the place.
+                </h2>
+
+                <div class="behind-subtitle">
+                    A shared vision for creating something worth returning to.
+                </div>
+
+                <div class="behind-intro">
+                    We're a small team with a big belief in Siquijor — its people,
+                    its potential, and the kind of experiences it can offer the world.<br>
+                    With different backgrounds and a shared passion for hospitality,
+                    we've come together to build a destination that feels true to
+                    the island and built to last.
+                </div>
+
+            </div>
+
+            <div class="people-grid">
+
+                <div class="person-card">
+
+                    <div class="person-photo">
+                        <img
+                           src="images/juliedavocol.png"
+                            alt="Team member 1"
+                            onerror="this.style.display='none'"
+                        >
+                    </div>
+
+     <a href="julie.html" class="person-link">
+                        <span class="person-name">Julie Davocol</span>
+                        <span class="person-arrow">→</span>
+                    </a>
+                    <div class="person-role">
+                        BACK END OPERATIONS
+                    </div>
+
+<p>
+    Oversees backend operations, people, systems, and day-to-day execution.
+</p>
+    
+
+                </div>
+
+                <div class="person-card">
+
+                    <div class="person-photo">
+                        <img
+                            src="images/ricardo.png"
+                            alt="Team member 2"
+                            onerror="this.style.display='none'"
+                        >
+                    </div>
+
+                    <a href="ricardo.html" class="person-link">
+                        <span class="person-name">Ricardo Ramos</span>
+                        <span class="person-arrow">→</span>
+                    </a>
+
+                    <div class="person-role">
+                       OVERALL OPERATIONS
+                    </div>
+
+<p>
+    Oversees Hideaway as a whole, leading front and back of house operations, coordinating staff, and ensuring smooth daily execution.
+</p>
+                    </p>
+
+                </div>
+
+                <div class="person-card">
+
+                    <div class="person-photo">
+                        <img
+                            src="images/person3.png"
+                            alt="Team member 3"
+                            onerror="this.style.display='none'"
+                        >
+                    </div>
+
+                    <a href="person3.html" class="person-link">
+                        <span class="person-name">PERSON THREE</span>
+                        <span class="person-arrow">→</span>
+                    </a>
+
+                    <div class="person-role">
+                        DESIGN &amp; CREATIVE
+                    </div>
+
+<p>
+                        Leads the visual identity, design direction
+                        and creative experience.
+                    </p>
+
+                </div>
+
+                <div class="person-card">
+
+                    <div class="person-photo">
+                        <img
+                            src="images/person4.png"
+                            alt="Team member 4"
+                            onerror="this.style.display='none'"
+                        >
+                    </div>
+
+                    <a href="person4.html" class="person-link">
+                        <span class="person-name">PERSON FOUR</span>
+                        <span class="person-arrow">→</span>
+                    </a>
+
+                    <div class="person-role">
+                        BRAND &amp; EXPERIENCE
+                    </div>
+
+<p>
+                        Shapes the brand, guest experience
+                        and destination identity.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="behind-footer">
+
+                <div class="behind-footer-line"></div>
+
+
+            </div>
+
         </div>
 
-    </div>
+        <div class="location">
+            San Juan · Siquijor
+        </div>
 
-    <div class="location">
-        San Juan · Siquijor
-    </div>
+        <div class="page">
+            06 / 06
+        </div>
 
-    <div class="page">
-        06 / 06
-    </div>
+    </section>
 
-</section>
+    <script>
 
+    /* =========================================================
+    ACTIVE NAVIGATION
+    ========================================================= */
 
-</main>
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll(".nav-links a");
 
+    window.addEventListener("scroll", () => {
 
-<script>
+        let current = "";
 
-/* =========================================================
-   ACTIVE NAVIGATION
-========================================================= */
+        sections.forEach(section => {
 
-const sections = document.querySelectorAll("section[id]");
-const navLinks = document.querySelectorAll(".nav-links a");
+            const sectionTop = section.offsetTop - 250;
 
-window.addEventListener("scroll", () => {
+            if (window.scrollY >= sectionTop) {
+                current = section.getAttribute("id");
+            }
 
-    let current = "";
+        });
 
-    sections.forEach(section => {
+        navLinks.forEach(link => {
 
-        const sectionTop = section.offsetTop - 250;
+            link.classList.remove("active");
 
-        if (window.scrollY >= sectionTop) {
-            current = section.getAttribute("id");
-        }
+            if (link.getAttribute("href") === "#" + current) {
+                link.classList.add("active");
+            }
+
+        });
 
     });
 
-    navLinks.forEach(link => {
-
-        link.classList.remove("active");
-
-        if (link.getAttribute("href") === "#" + current) {
-            link.classList.add("active");
-        }
-
-    });
-
-});
-
-</script>
+    </script>
 
 
-</body>
-</html>
+    </body>
+    </html>
