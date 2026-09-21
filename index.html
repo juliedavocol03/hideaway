@@ -302,7 +302,7 @@
     .section-title {
         font-family: Georgia, "Times New Roman", serif;
 
-        font-size: clamp(56px, 5vw, 58px);
+        font-size: clamp(60px, 6vw, 60px);
 
         font-weight: 400;
 
@@ -312,18 +312,18 @@
 
         max-width: 1100px;
 
-        margin-bottom: 30px;
+        margin-bottom: 35px;
     }
 
 
     /* SUBTITLE */
 
     .section-subtitle {
-        max-width: 560px;
+        max-width: 800px;
 
         font-family: Georgia, "Times New Roman", serif;
 
-        font-size: 23px;
+        font-size: 30px;
 
         line-height: 1.5;
 
@@ -338,9 +338,9 @@
     /* BODY */
 
     .section-text {
-        max-width: 900px;
+        max-width: 950px;
 
-        font-size: 9px;
+        font-size: 13px;
 
         line-height: 1.9;
 
@@ -388,14 +388,13 @@
         font-weight: 400;
         line-height: 0.92;
         color: #f4f0e8;
-        margin-bottom: 45   px;
+        margin-bottom: 80px;
     }
 
     .opportunity-intro {
         max-width: 500px;
         font-size: 13px;
         line-height: 1.8;
-        margin-top: 35px;
         color: #aaa69e;
     }
 
@@ -741,21 +740,21 @@
     /* FOOD */
 
     .gap-food {
-        top: 60px;
+        top: 45px;
     }
 
 
     /* NIGHTLIFE */
 
     .gap-nightlife {
-        top: 215px;
+        top: 205px;
     }
 
 
     /* DESIGN */
 
     .gap-design {
-        top: 385px;
+        top: 365px;
     }
 
 
@@ -819,7 +818,7 @@
         position: absolute;
 
         left: 280px;
-        top: 70px;
+        top: 58px;
         width: 320px;
         height: 450px;
 
@@ -1465,7 +1464,7 @@
 
     .space-copy {
         max-width: 520px;
-        font-size: 13px;
+        font-size: 15px;
         margin-top: 40px;
     }
 
@@ -1487,9 +1486,9 @@
 
     #space .layout-wrapper {
         position: absolute;
-        top: -15px;
+        top: 15px;
         right: 0;
-        width: 42%;
+        width: 48%;
         margin: 0;
         display: block;
     }
@@ -1571,7 +1570,7 @@
 
         font-family: Georgia, "Times New Roman", serif;
 
-        font-size: clamp(37px, 3vw, 57px);
+        font-size: clamp(40px, 3.5vw, 60px);
 
         font-weight: 400;
 
@@ -1744,8 +1743,9 @@
 
         left: 30px;
         bottom: 28px;
-        top: 140px;
+
         width: 58%;
+
         z-index: 3;
     }
 
@@ -1759,7 +1759,7 @@
             "Times New Roman",
             serif;
 
-        font-size: 20px;
+        font-size: 31px;
 
         font-weight: 400;
 
@@ -1793,7 +1793,7 @@
 
         font-family: Arial, sans-serif;
 
-        font-size: 12px;
+        font-size: 14px;
 
         line-height: 1.65;
 
@@ -2360,7 +2360,500 @@
     }
 }
 </style>
-    </head>
+    
+<style id="FINAL-MOBILE-FIX">
+/* =========================================================
+   HIDEAWAY — FINAL MOBILE LAYOUT
+   These rules intentionally come LAST so they override
+   earlier responsive rules without changing desktop.
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden !important;
+  }
+
+  body {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* ---------- NAVIGATION ---------- */
+  .top-nav {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 92px !important;
+    padding: 18px 24px 10px !important;
+    box-sizing: border-box !important;
+    z-index: 1000 !important;
+    display: block !important;
+    background: rgba(16,16,15,.96) !important;
+  }
+
+  .nav-logo {
+    display: none !important;
+  }
+
+  .nav-links {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 0 !important;
+    margin: 0 !important;
+  }
+
+  .nav-links a {
+    padding: 8px 7px !important;
+    font-size: 8px !important;
+    line-height: 1 !important;
+    letter-spacing: 1.5px !important;
+    white-space: nowrap !important;
+  }
+
+  .nav-links a:last-child {
+    flex-basis: 100% !important;
+    text-align: center !important;
+    margin-top: 5px !important;
+  }
+
+  /* Every slide starts below the fixed nav */
+  .slide,
+  .brand-page,
+  .opportunity-page,
+  .gap-page,
+  .business-page,
+  .behind-page {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 100svh !important;
+    overflow: hidden !important;
+  }
+
+  /* ---------- SLIDE 01 BRAND ---------- */
+  #brand {
+    min-height: 100svh !important;
+    padding: 145px 7vw 95px !important;
+  }
+
+  #brand .content {
+    position: relative !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+  }
+
+  #brand .brand {
+    width: 100% !important;
+    max-width: 100% !important;
+    font-size: clamp(54px, 15vw, 82px) !important;
+    line-height: .95 !important;
+    letter-spacing: 1px !important;
+    white-space: nowrap !important;
+  }
+
+  #brand .story {
+    max-width: 100% !important;
+    font-size: 15px !important;
+    line-height: 1.8 !important;
+  }
+
+  /* ---------- SLIDE 02 OPPORTUNITY ---------- */
+  #opportunity {
+    padding: 145px 7vw 95px !important;
+    min-height: 100svh !important;
+  }
+
+  #opportunity .opportunity-layout {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  #opportunity .opportunity-left,
+  #opportunity .opportunity-right {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  #opportunity .opportunity-title {
+    font-size: 50px !important;
+    line-height: .98 !important;
+  }
+
+  #opportunity .opportunity-intro {
+    font-size: 14px !important;
+    line-height: 1.7 !important;
+  }
+
+  #opportunity .opportunity-right {
+    margin-top: 45px !important;
+  }
+
+  /* ---------- SLIDE 03 THE GAP ---------- */
+  #gap {
+    min-height: 100svh !important;
+    height: auto !important;
+    padding: 145px 7vw 105px !important;
+    overflow: hidden !important;
+  }
+
+  #gap .gap-inner {
+    display: block !important;
+    width: 100% !important;
+    min-height: 0 !important;
+  }
+
+  #gap .gap-header {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+  }
+
+  #gap .gap-title {
+    font-size: 47px !important;
+    line-height: 1.02 !important;
+    letter-spacing: -1.5px !important;
+    margin: 0 !important;
+  }
+
+  #gap .gap-intro {
+    font-size: 14px !important;
+    line-height: 1.7 !important;
+    max-width: 100% !important;
+    margin-top: 22px !important;
+  }
+
+  #gap .gap-visual {
+    position: relative !important;
+    width: 100% !important;
+    height: 650px !important;
+    min-height: 650px !important;
+    margin-top: 45px !important;
+    transform: none !important;
+    overflow: hidden !important;
+  }
+
+  /* Photos occupy a clean left column */
+  #gap .gap-piece {
+    position: absolute !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 150px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 25px !important;
+    margin: 0 !important;
+    transform: none !important;
+  }
+
+  #gap .gap-food {
+    top: 0 !important;
+  }
+
+  #gap .gap-nightlife {
+    top: 180px !important;
+  }
+
+  #gap .gap-design {
+    top: 360px !important;
+  }
+
+  #gap .gap-image {
+    position: relative !important;
+    flex: 0 0 125px !important;
+    width: 125px !important;
+    height: 125px !important;
+    min-width: 125px !important;
+    min-height: 125px !important;
+    margin: 0 !important;
+  }
+
+  #gap .gap-piece-copy {
+    position: relative !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: 145px !important;
+    transform: none !important;
+    margin: 0 !important;
+  }
+
+  #gap .gap-piece-title {
+    font-size: 10px !important;
+    letter-spacing: 4px !important;
+    margin-bottom: 14px !important;
+  }
+
+  #gap .gap-piece-copy p {
+    font-size: 11px !important;
+    line-height: 1.55 !important;
+    margin: 0 !important;
+  }
+
+  /* Hide the desktop connector on mobile */
+  #gap .gap-connector {
+    display: none !important;
+  }
+
+  /* The central statement gets its own area */
+  #gap .gap-opportunity {
+    position: absolute !important;
+    left: 0 !important;
+    right: auto !important;
+    top: 505px !important;
+    width: 100% !important;
+    padding: 0 !important;
+    border: 0 !important;
+    transform: none !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+  }
+
+  #gap .gap-opportunity-label {
+    font-size: 9px !important;
+    letter-spacing: 4px !important;
+    margin-bottom: 15px !important;
+  }
+
+  #gap .gap-opportunity-text {
+    font-size: 39px !important;
+    line-height: 1.02 !important;
+    color: #f4f0e8 !important;
+  }
+
+  #gap .gap-brand {
+    margin-top: 22px !important;
+    font-size: 30px !important;
+    letter-spacing: 5px !important;
+  }
+
+  #gap .gap-brand-subtitle {
+    margin-top: 7px !important;
+    font-size: 8px !important;
+    letter-spacing: 3px !important;
+  }
+
+  #gap .gap-elements {
+    display: none !important;
+  }
+
+  /* ---------- SLIDE 04 THE SPACE ---------- */
+  #space {
+    min-height: auto !important;
+    height: auto !important;
+    padding: 145px 7vw 110px !important;
+    overflow: hidden !important;
+  }
+
+  #space .section-inner {
+    width: 100% !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+  }
+
+  #space .section-number {
+    margin-bottom: 25px !important;
+  }
+
+  #space .section-title {
+    width: 100% !important;
+    max-width: none !important;
+    font-size: 51px !important;
+    line-height: .98 !important;
+    letter-spacing: -2px !important;
+    margin: 0 !important;
+  }
+
+  #space .section-subtitle {
+    width: 100% !important;
+    max-width: none !important;
+    margin-top: 25px !important;
+    font-size: 23px !important;
+    line-height: 1.35 !important;
+  }
+
+  #space .space-copy {
+    width: 100% !important;
+    max-width: none !important;
+    margin-top: 38px !important;
+    font-size: 14px !important;
+    line-height: 1.7 !important;
+  }
+
+  /* Moodboard is below ALL text */
+  #space .layout-wrapper {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 42px 0 0 !important;
+    display: block !important;
+  }
+
+  #space .layout-image {
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    height: auto !important;
+    margin: 0 !important;
+    transform: none !important;
+  }
+
+  /* ---------- SLIDE 05 BUSINESS ---------- */
+  .business-page {
+    min-height: auto !important;
+    padding: 145px 7vw 105px !important;
+  }
+
+  .business-title {
+    font-size: 48px !important;
+    line-height: .98 !important;
+  }
+
+  .business-subtitle {
+    font-size: 20px !important;
+    line-height: 1.35 !important;
+    margin: 24px 0 45px !important;
+  }
+
+  .business-pillars {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .business-card {
+    position: relative !important;
+    width: 100% !important;
+    height: 300px !important;
+    min-height: 300px !important;
+    box-sizing: border-box !important;
+  }
+
+  .business-card img {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  .card-content {
+    left: 28px !important;
+    bottom: 25px !important;
+    width: calc(100% - 56px) !important;
+  }
+
+  .card-content h2 {
+    font-size: 30px !important;
+  }
+
+  .card-content p {
+    font-size: 13px !important;
+    line-height: 1.55 !important;
+  }
+
+  .guest-journey {
+    display: none !important;
+  }
+
+  /* ---------- SLIDE 06 BEHIND HIDEAWAY ---------- */
+  .behind-page {
+    min-height: auto !important;
+    overflow: visible !important;
+  }
+
+  .behind-container {
+    width: 86% !important;
+    padding-top: 145px !important;
+    padding-bottom: 105px !important;
+  }
+
+  .people-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+
+  .person-photo {
+    width: 100% !important;
+    height: 300px !important;
+  }
+
+  /* ---------- FOOTER ---------- */
+  .location,
+  .page {
+    position: absolute !important;
+    bottom: 30px !important;
+    z-index: 20 !important;
+    font-size: 9px !important;
+    letter-spacing: 2.5px !important;
+  }
+
+  .location {
+    left: 7vw !important;
+  }
+
+  .page {
+    right: 7vw !important;
+  }
+
+  /* Long slides: footer naturally follows content */
+  .business-page .location,
+  .business-page .page,
+  .behind-page .location,
+  .behind-page .page {
+    position: absolute !important;
+  }
+}
+
+/* Smaller iPhones */
+@media (max-width: 390px) {
+  .nav-links a {
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+    font-size: 7.5px !important;
+  }
+
+  #brand .brand {
+    font-size: 14vw !important;
+  }
+
+  #gap .gap-title {
+    font-size: 43px !important;
+  }
+
+  #gap .gap-image {
+    flex-basis: 112px !important;
+    width: 112px !important;
+    height: 112px !important;
+    min-width: 112px !important;
+  }
+
+  #gap .gap-piece-copy {
+    max-width: 135px !important;
+  }
+
+  #gap .gap-opportunity-text {
+    font-size: 35px !important;
+  }
+
+  #space .section-title {
+    font-size: 47px !important;
+  }
+}
+</style>
+
+</head>
 
 
     <body>
@@ -3051,7 +3544,7 @@
             <div class="space-copy section-text">
 
                 <p>
-    Designed to offer something different in an island setting — a space where elevated design, dining, atmosphere, and energy come together. We wanted Hideaway to feel unexpected, creating a fresh experience that gives both locals and travelers a new reason to enjoy Siquijor.
+        The design creates a warm, refined island atmosphere through natural textures, earthy tones, soft lighting, and organic forms — creating a space that feels timeless, intimate, and distinctly Siquijor.
     </p>
 
             </div>
@@ -3107,7 +3600,9 @@
             <!-- FOOD -->
             <div class="business-card">
 
+                <div class="card-number">01</div>
 
+                <div class="card-icon">♜</div>
 
                 <div class="card-content">
                     <h2>FOOD</h2>
@@ -3131,6 +3626,9 @@
             <!-- DRINKS -->
             <div class="business-card">
 
+                <div class="card-number">02</div>
+
+                <div class="card-icon">♢</div>
 
                 <div class="card-content">
                     <h2>DRINKS</h2>
@@ -3154,6 +3652,9 @@
             <!-- EXPERIENCE -->
             <div class="business-card">
 
+                <div class="card-number">03</div>
+
+                <div class="card-icon">◉</div>
 
                 <div class="card-content">
                     <h2>EXPERIENCE</h2>
